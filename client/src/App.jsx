@@ -8,8 +8,12 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import Home from './pages/Home'
+import Login from './pages/Signup'
+import Signup from './pages/Login'
+import Profile from './pages/Profile'
+import Header from './components/Header'
+import Footer from './components/Footer'
 import './App.css'
 
 const httpLink = createHttpLink({
@@ -38,7 +42,7 @@ function App() {
         <div>
           <Header />
           <div>
-            <Routers>
+            <Routes>
               <Route
                 path='/'
                 element={<Home />}
@@ -55,8 +59,9 @@ function App() {
                 path='/'
                 element={<Profile />}
               />
-            </Routers>
+            </Routes>
           </div>
+          <Footer />
         </div>
       </Router>
     </ApolloProvider>

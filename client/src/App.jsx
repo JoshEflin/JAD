@@ -48,15 +48,15 @@ function App() {
                 element={<Home />}
               />
               <Route
-                path='/'
+                path='/login'
                 element={<Login />}
               />
               <Route
-                path='/'
+                path='/signup'
                 element={<Signup />}
               />
               <Route
-                path='/'
+                path='/me'
                 element={<Profile />}
               />
             </Routes>

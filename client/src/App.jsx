@@ -9,20 +9,15 @@ import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react'
 import Home from './pages/Home'
-import Login from './pages/Signup'
-import Signup from './pages/Login'
-import Profile from './pages/Profile'
+// import Signup from './pages/Signup'
+// import Login from './pages/Login'
+// import Profile from './pages/Profile'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import './App.css'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
-});
-
-const client = new ApolloClient({
-  link: authLink.concat(httpLink),
-  cache: new InMemoryCache(),
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -33,6 +28,11 @@ const authLink = setContext((_, { headers }) => {
       authorization: token ? `Bearer ${token}` : '',
     },
   };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
 });
 
 function App() {
@@ -47,7 +47,7 @@ function App() {
                 path='/'
                 element={<Home />}
               />
-              <Route
+              {/* <Route
                 path='/login'
                 element={<Login />}
               />
@@ -58,7 +58,7 @@ function App() {
               <Route
                 path='/me'
                 element={<Profile />}
-              />
+              /> */}
             </Routes>
           </div>
           <Footer />

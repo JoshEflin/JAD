@@ -17,6 +17,7 @@ const typeDefs = gql`
         users: [User]
         user(username: String!): User
         me: User
+        getData: [String]
     }
 
     type Mutation {

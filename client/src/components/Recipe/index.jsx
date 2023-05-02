@@ -1,5 +1,4 @@
 import React from "react";
-import find from "../../utils/API"
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';

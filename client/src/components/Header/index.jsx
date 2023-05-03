@@ -7,9 +7,9 @@ import Auth from '../../utils/auth';
 
 const navigation = [
     { name: 'Dashboard', href: '#', current: true },
-    { name: 'Team', href: '#', current: false },
-    { name: 'Projects', href: '#', current: false },
-    { name: 'Calendar', href: '#', current: false },
+    { name: 'Recipes', href: '#', current: false },
+    { name: 'Products', href: '#', current: false },
+    { name: 'Cart', href: '#', current: false },
   ]
 
 function classNames(...classes) {

@@ -12,11 +12,22 @@ const typeDefs = gql`
         token: ID!
         user: User
     }
-
+    type Recipe {
+        label:String!
+        image:String
+        healthLabels:String
+        cautions:String
+        ingredients:String
+        calories:String
+        mealType:String
+        dishType:String
+        totalNutrients:String
+    }
     type Query {
         users: [User]
         user(username: String!): User
         me: User
+        getRecipe: Recipe
     }
 
     type Mutation {

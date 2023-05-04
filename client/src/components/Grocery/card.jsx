@@ -1,6 +1,11 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useMutation, useQuery } from '@apollo/client';
 
 
+// import { GET_RECIPE } from '../../utils/mutations'
 export function RecipeCard() {
+//  const [getRecipe, {error}]= useMutation(GET_RECIPE);
 
 
 
@@ -52,6 +57,7 @@ const products = [
   ]
   
   export  function IngredientCard() {
+    // const [getRecipe,{error,data}] =useMutation(GET_RECIPE)
     return (
       <div className="bg-white">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
@@ -64,6 +70,7 @@ const products = [
                   <img
                     src={product.imageSrc}
                     alt={product.imageAlt}
+                    // onClick= {getRecipe}
                     className="h-full w-full object-cover object-center group-hover:opacity-75"
                   />
                 </div>

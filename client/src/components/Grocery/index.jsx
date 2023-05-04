@@ -8,7 +8,7 @@ const Grocery = () => {
     return (
         <div>
             <h1 className = "bg-green">ingredient card template</h1>
-            < IngredientCard />
+            {/* < IngredientCard /> */}
 
             <h1>Recipe Card Template</h1>
             <RecipeCard />

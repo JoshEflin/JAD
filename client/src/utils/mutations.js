@@ -24,3 +24,23 @@ export const ADD_USER = gql`
     }
   }
 `;
+export const GET_RECIPE = gql`
+mutation getRecipe($foodStr: String!) {
+  getRecipe(foodStr: $foodStr) {
+    calories
+    dishType
+    healthLabels
+    image
+    label
+    mealType
+    ingredients {
+      food
+      foodId
+      image
+      measure
+      quantity
+      text
+      weight
+    }
+  }
+}`

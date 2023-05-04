@@ -33,15 +33,15 @@ const Signup = () => {
       event.stopPropagation();
     }
 
-    // try {
+     try {
       const { data } = await addUser({
         variables: { ...formState },
       });
 
       Auth.login(data.addUser.token);
-    // } catch (e) {
-    //   console.error(e);
-    // }
+     } catch (e) {
+       console.error(e);
+     }
   };
 
   // setFormState({

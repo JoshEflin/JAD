@@ -7,10 +7,9 @@ import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 
 const navigation = [
-    { name: 'Dashboard', href: '#', current: true },
+    { name: 'Home', href: '#', current: true },
     { name: 'Recipes', href: '#', current: false },
     { name: 'Products', href: '#', current: false },
-    { name: 'Cart', href: '#', current: false },
   ]
 
 function classNames(...classes) {
@@ -71,10 +70,10 @@ const Header = () => {
                 {/* <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
                   Login
                 </button> */}
-                <Link to='/login'>
+                <Link className='text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium' to='/login'>
                   Login
                 </Link>
-                <Link className='text-gray-300 bg-gray-800' to='/signup'>
+                <Link className='text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium' to='/signup'>
                   Signup
                 </Link>
                 <button

@@ -14,6 +14,7 @@ import Home from './pages/Home'
 // import Profile from './pages/Profile'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import Signup from './pages/Signup'
 import './App.css'
 
 const httpLink = createHttpLink({
@@ -50,12 +51,12 @@ function App() {
               {/* <Route
                 path='/login'
                 element={<Login />}
-              />
+              /> */}
               <Route
                 path='/signup'
                 element={<Signup />}
               />
-              <Route
+              {/* <Route
                 path='/me'
                 element={<Profile />}
               /> */}

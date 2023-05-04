@@ -9,10 +9,3 @@ query user($username: String!) {
     }
 }
 `;
-
-export const Query_DATA = gql`
-query getData($query: String!) {
-    getData(query: $query){
-        __typename  
-    }
-}`

@@ -11,6 +11,7 @@ import { useState } from 'react'
 import Home from './pages/Home'
 import Signup from './pages/Signup'
 import Login from './pages/Login'
+import Profile from './pages/Profile'
 // import Profile from './pages/Profile'
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -55,10 +56,10 @@ function App() {
                 path='/signup'
                 element={<Signup />}
               />
-              {/* <Route
-                path='/me'
+              <Route
+                path='/Profile'
                 element={<Profile />}
-              /> */}
+              />
             </Routes>
           </div>
           <Footer />

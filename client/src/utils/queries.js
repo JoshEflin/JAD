@@ -9,3 +9,13 @@ query user($username: String!) {
     }
 }
 `;
+
+export const QUERY_ITEMS = gql`
+query GetItems {
+    getItems {
+      name
+      price
+      stock
+    }
+  }`;
+

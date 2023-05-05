@@ -8,7 +8,13 @@ import Auth from '../utils/auth';
 
 const Profile = () => {
     return (
-        <h1>Profile</h1>
+        <div>
+            <h1>Profile</h1>
+            <img></img>
+            <p>Username: </p>
+            <p>Email: </p>
+            <p></p>
+        </div>
     )
 }
 

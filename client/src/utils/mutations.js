@@ -24,3 +24,12 @@ export const ADD_USER = gql`
     }
   }
 `;
+export const GET_ITEM = gql`
+mutation Item($foodItem: String!) {
+  item(foodItem: $foodItem) {
+    name
+    price
+    stock
+  }
+}
+  `;

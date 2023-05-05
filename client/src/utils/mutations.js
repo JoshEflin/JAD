@@ -43,4 +43,13 @@ mutation getRecipe($foodStr: String!) {
       weight
     }
   }
-}`
+}`;
+export const GET_ITEM = gql`
+mutation Item($foodItem: String!) {
+  item(foodItem: $foodItem) {
+    name
+    price
+    stock
+  }
+}
+  `;

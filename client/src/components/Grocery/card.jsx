@@ -7,7 +7,10 @@ import { GET_RECIPE } from "../../utils/mutations";
 const HealthLabels = ({labels})=> {
   console.log(labels)
 
-  // labels.map((label, key) => <p key={key}>{label}</p>)
+//  labels.map ( (val, i)=> {
+//    val.map(healthLabel, i=> <p key={i}>butt</p>)
+  
+//  })
 }
 // import { GET_RECIPE } from '../../utils/mutations'
 export function RecipeCard({cardData}) {
@@ -24,7 +27,7 @@ export function RecipeCard({cardData}) {
     return (getRecipe.map((recipe) => {
       // console.log(recipe)
       const calories = recipe.calories;
-      console.log(calories)
+      // console.log(calories)
       const healthLabels = recipe.healthLabels; //array of strings
       const image = recipe.image;
       const ingredients = recipe.ingredients;
@@ -37,7 +40,7 @@ export function RecipeCard({cardData}) {
             <p>
               {calories}
             </p>
-              <HealthLabels labels={healthLabels} ></HealthLabels>
+              <HealthLabels labels={healthLabels} />
               <img src ={image}/>
               {/* {ingredients} */}
               {/* {label} */}

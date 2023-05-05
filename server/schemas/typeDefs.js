@@ -49,7 +49,8 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     getRecipe(foodStr: String!): [Recipe]
-    item(foodItem: String!): Ingredient
+    item(name: String!): Ingredient
+    stock(name: String, stock: Int):Ingredient
   }
 `;
 

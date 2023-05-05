@@ -50,9 +50,18 @@ const resolvers = {
       return { token, user };
     },
     item: async (parent, { foodItem }) => {
-      const food = Ingredient.findOne({ name: foodItem });
+      const food = await Ingredient.findOne({ name: foodItem });
       if (!food) { return (console.log("out of stock")) }
       return food;
+    },
+    stock: async (parent, { name, stock }) => {
+      const filter = { name }
+      const update = { stock }
+      const updatedFood = await Ingredient.findOneAndUpdate(filter, update, {
+        returnOriginal: false
+      });
+      if (!updatedFood) { return console.log("Something went Wrong!") }
+      return updatedFood;
     }
   },
 };

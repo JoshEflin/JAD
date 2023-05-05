@@ -57,7 +57,7 @@ export  function RecipeCard({ cardData }) {
       const mealType = recipe.mealType; //array of string
       return (
         <>
-          <div key={key} className="group">
+          <div key={key} className="group bg-slate-200">
           <h3 className="mt-4 text-sm text-gray-700">{label}</h3>
             <MealType mealType={mealType} />
             <p>{Math.floor(calories)} Calories</p>

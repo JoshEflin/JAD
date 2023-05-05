@@ -12,6 +12,11 @@ const typeDefs = gql`
     token: ID!
     user: User
   }
+  type Ingredient {
+    name: String
+    price: Float
+    stock: Float
+  }
   type Ingredients {
     text: String
     quantity: Float
@@ -37,12 +42,14 @@ const typeDefs = gql`
     users: [User]
     user(username: String!): User
     me: User
+    getItems: [Ingredient]
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     getRecipe(foodStr: String!): [Recipe]
+    item(foodItem: String!): Ingredient
   }
 `;
 

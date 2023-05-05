@@ -33,3 +33,13 @@ mutation Item($foodItem: String!) {
   }
 }
   `;
+
+export const UPDATE_INVENTORY = gql`
+mutation Stock($name: String, $stock: Int) {
+  stock(name: $name, stock: $stock) {
+    name
+    price
+    stock
+  }
+}
+ `;

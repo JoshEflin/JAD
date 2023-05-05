@@ -4,53 +4,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { GET_RECIPE } from "../../utils/mutations";
 
 
-const HealthLabels = ({labels})=> {
-  console.log(labels)
 
-//  labels.map ( (val, i)=> {
-//    val.map(healthLabel, i=> <p key={i}>butt</p>)
-  
-//  })
-}
-// import { GET_RECIPE } from '../../utils/mutations'
-export function RecipeCard({cardData}) {
-  if (cardData === null) {
-    return (
-      <div className="box-border h-100 w-100 ">
-        hi
-        {/* <p>{calories}{healthLabels}{image}{ingredients}{label}{mealType}</p> */}
-      </div>
-    );
-  } else {
-    const {getRecipe}= cardData
-    // console.log("inside card", getRecipe);
-    return (getRecipe.map((recipe) => {
-      // console.log(recipe)
-      const calories = recipe.calories;
-      // console.log(calories)
-      const healthLabels = recipe.healthLabels; //array of strings
-      const image = recipe.image;
-      const ingredients = recipe.ingredients;
-      const label = recipe.label;
-      const mealType = recipe.mealType;
-      return (
-        <>
-          <div className="box-border h-100 w-100 ">
-            hi
-            <p>
-              {calories}
-            </p>
-              <HealthLabels labels={healthLabels} />
-              <img src ={image}/>
-              {/* {ingredients} */}
-              {/* {label} */}
-              {/* {mealType} */}
-          </div>
-        </>
-      );
-    }));
-  }
-}
 
 const products = [
   {

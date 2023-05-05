@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { IngredientCard, RecipeCard } from "./card";
+import { RecipeCard } from "./recipeCard";
 import { GET_RECIPE } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 
@@ -13,7 +13,7 @@ const Grocery = () => {
 
     setSearchString(value);
   };
-  const [cardData, setCardData]= useState(null)
+  const [cardData, setCardData] = useState(null);
   const handleSearchSubmit = async (event) => {
     event.preventDefault();
 
@@ -25,9 +25,7 @@ const Grocery = () => {
       const { data } = await getRecipe({
         variables: { ...mutationObj },
       });
-      setCardData(data)
-
-      
+      setCardData(data);
     } catch (e) {
       console.log(e);
     }
@@ -82,10 +80,14 @@ const Grocery = () => {
       {/* <h1 className="bg-green">ingredient card template</h1> */}
       {/* < IngredientCard /> */}
 
-      <h1>Recipe Card Template</h1>
-      <RecipeCard
-        cardData={cardData}
-      />
+      <div className="bg-white">
+        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+          <h2 className="sr-only">Recipe</h2>
+          <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+            <RecipeCard cardData={cardData} />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom';
+import Profile from '../../pages/Profile'
 
 import Auth from '../../utils/auth';
 
@@ -22,7 +23,10 @@ function classNames(...classes) {
   }
 
 const Header = () => {
-    
+    const logout = (event) => {
+      event.preventDefault();
+      Auth.logout();
+    };
     return (
         <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -75,12 +79,22 @@ const Header = () => {
                 {/* <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
                   Login
                 </button> */}
-                <Link className='text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium' to='/login'>
-                  Login
-                </Link>
-                <Link className='text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium' to='/signup'>
-                  Signup
-                </Link>
+                {Auth.loggedIn() ? (
+                  <>
+                    <Link className='text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium' onClick={logout}>
+                      Logout
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link className='text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium' to='/login'>
+                      Login
+                    </Link>
+                    <Link className='text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium' to='/signup'>
+                      Signup
+                    </Link>
+                  </>
+                )}
                 <button
                   type="button"
                   className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -112,12 +126,12 @@ const Header = () => {
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
-                          <a
-                            href="#"
+                          <Link
+                            to='/profile'
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Your Profile
-                          </a>
+                          </Link>
                         )}
                       </Menu.Item>
                       <Menu.Item>
@@ -127,16 +141,6 @@ const Header = () => {
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Settings
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                            Sign out
                           </a>
                         )}
                       </Menu.Item>

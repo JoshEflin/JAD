@@ -12,6 +12,11 @@ const navigation = [
     { name: 'Recipes', href: '#', current: false },
     { name: 'Products', href: '#', current: false },
   ]
+// need to add a handleclick to set current to true when clicked
+// const [isCurrent, setIsCurrent]= useState('Home')
+// const handleNavClick = () => {
+
+// }
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')

@@ -59,7 +59,11 @@ function App() {
               <Route
                 path='/Profile'
                 element={<Profile />}
-              />
+              /> */}
+              {/* <Route
+              path='/products'
+              element={<Grocery />} */}
+              {/* /> */}
             </Routes>
           </div>
           <Footer />

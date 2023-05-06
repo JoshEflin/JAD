@@ -20,7 +20,7 @@ const userSchema = new Schema({
         required: true,
         minlength: 8,
     },
-    savedrecipe: [recipeSchema],
+    // savedrecipe: [recipeSchema],
 });
 
 userSchema.pre('save', async function (next) {
@@ -38,4 +38,4 @@ userSchema.methods.isCorrectPassword = async function (password) {
 
 const User = model('User', userSchema);
 
-module.exports = User;
+module.exports = {User};

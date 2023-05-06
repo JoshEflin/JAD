@@ -11,7 +11,7 @@ const Home = () => {
             <div>
                 <div>
                     <h1>placeholder</h1>
-                    <Grocery />
+                    {/* <Grocery /> */}
                 </div>
             </div>
         </main>

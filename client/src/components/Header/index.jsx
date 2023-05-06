@@ -7,10 +7,15 @@ import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 
 const navigation = [
-    { name: 'Home', href: '#', current: true },
-    { name: 'Recipes', href: '#', current: false },
+    { name: 'Home', href: '/', current: true },
+    { name: 'Recipes', href: '/recipes', current: false },
     { name: 'Products', href: '#', current: false },
   ]
+// need to add a handleclick to set current to true when clicked
+// const [isCurrent, setIsCurrent]= useState('Home')
+// const handleNavClick = () => {
+
+// }
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')

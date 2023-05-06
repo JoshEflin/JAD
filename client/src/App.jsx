@@ -60,10 +60,10 @@ function App() {
                 path='/me'
                 element={<Profile />}
               /> */}
-              <Route
+               {/* <Route
               path='/recipes'
-              element={<Grocery />}
-               /> 
+              element={<Grocery />} 
+               />  */}
             </Routes>
           </div>
           <Footer />

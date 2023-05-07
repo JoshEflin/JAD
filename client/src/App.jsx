@@ -12,10 +12,10 @@ import Home from './pages/Home'
 import Signup from './pages/Signup'
 import Login from './pages/Login'
 import Recipe from './components/Recipe';
-// import Profile from './pages/Profile'
+import Profile from './pages/Profile'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import Grocery from './components/Grocery'
+
 import './App.css'
 
 const httpLink = createHttpLink({

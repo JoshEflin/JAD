@@ -92,4 +92,4 @@ const Recipe = () => {
   );
 };
 
-export default Grocery;
+export default Recipe;

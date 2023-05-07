@@ -1,32 +1,17 @@
-<<<<<<< HEAD
-import React, { useState } from "react";
-import { Fragment } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
-=======
 import React, { useState } from 'react';
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom';
 import Profile from '../../pages/Profile'
->>>>>>> 62ecce9f64a72cb5299a1fd88ddf1f01b25edbec
 
 import Auth from "../../utils/auth";
 
 const navigation = [
-<<<<<<< HEAD
   { name: "Home", href: "home" },
   { name: "Recipes", href: "recipes" },
   { name: "Products", href: "products" },
 ];
-=======
-    { name: 'Home', href: '#', current: true },
-    { name: 'Recipes', href: '#', current: false },
-    { name: 'Products', href: '#', current: false },
-  ]
->>>>>>> 62ecce9f64a72cb5299a1fd88ddf1f01b25edbec
 // need to add a handleclick to set current to true when clicked
 // const [isCurrent, setIsCurrent]= useState('Home')
 
@@ -53,21 +38,13 @@ const NavComponent = ({ navigation, isCurrent, handleNavClick }) => {
   ));
 };
 const Header = () => {
-<<<<<<< HEAD
   const [isCurrent, setIsCurrent] = useState("Home");
   const handleNavClick = (clicked) => {
     return setIsCurrent(clicked);
   };
+
   return (
     <Disclosure as="nav" className="bg-gray-800">
-=======
-    const logout = (event) => {
-      event.preventDefault();
-      Auth.logout();
-    };
-    return (
-        <Disclosure as="nav" className="bg-gray-800">
->>>>>>> 62ecce9f64a72cb5299a1fd88ddf1f01b25edbec
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -124,7 +101,6 @@ const Header = () => {
                 {/* <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
                   Login
                 </button> */}
-<<<<<<< HEAD
                 <Link
                   onClick={() => handleNavClick("Login")}
                   className={classNames(
@@ -149,24 +125,6 @@ const Header = () => {
                 >
                   Signup
                 </Link>
-=======
-                {Auth.loggedIn() ? (
-                  <>
-                    <Link className='text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium' onClick={logout}>
-                      Logout
-                    </Link>
-                  </>
-                ) : (
-                  <>
-                    <Link className='text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium' to='/login'>
-                      Login
-                    </Link>
-                    <Link className='text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium' to='/signup'>
-                      Signup
-                    </Link>
-                  </>
-                )}
->>>>>>> 62ecce9f64a72cb5299a1fd88ddf1f01b25edbec
                 <button
                   type="button"
                   className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -198,18 +156,9 @@ const Header = () => {
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
-<<<<<<< HEAD
-                          <a
-                            href="#"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-=======
                           <Link
                             to='/profile'
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
->>>>>>> 62ecce9f64a72cb5299a1fd88ddf1f01b25edbec
                           >
                             Your Profile
                           </Link>
@@ -228,22 +177,6 @@ const Header = () => {
                           </a>
                         )}
                       </Menu.Item>
-<<<<<<< HEAD
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Sign out
-                          </a>
-                        )}
-                      </Menu.Item>
-=======
->>>>>>> 62ecce9f64a72cb5299a1fd88ddf1f01b25edbec
                     </Menu.Items>
                   </Transition>
                 </Menu>

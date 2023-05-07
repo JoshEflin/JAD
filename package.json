@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "dotenv": "^16.0.3",
-    "git-filter-repo": "^0.0.30"
+    "git-filter-repo": "^0.0.30",
+    "react-avatar-edit": "^1.2.0"
   }
 }

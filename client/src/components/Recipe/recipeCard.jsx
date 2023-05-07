@@ -29,46 +29,56 @@ const Ingredients = ({ ingredients }) => {
 const MealType = ({ mealType }) => {
   // console.log(healthLabels)
 
-  const mealTypeSpan = mealType.map((val, i) => {
-    console.log(val);
-    return <span key={i}>{val}</span>;
+  return mealType.map((val, i) => {
+    const types = val.split("/");
+    console.log(types);
+    if (types[1]) {
+      return (
+        <>
+          <div key={i}>
+            <span className=" rounded p-2 text-lg"> Perfect for {types[0]} or {types[1]} </span>
+          </div>
+        </>
+      );
+    } else {
+      return (
+        <div key={i}>
+          <span className=" rounded p-2 text-lg">Perfect for {types[0]}</span>
+        </div>
+      );
+    }
   });
-  return mealTypeSpan;
 };
 // import { GET_RECIPE } from '../../utils/mutations'
-export  function RecipeCard({ cardData }) {
+export function RecipeCard({ cardData }) {
   if (cardData === null) {
-    return (
-      <div className="box-border h-100 w-100 ">
-        hi
-      </div>
-    );
+    return <div className="box-border h-100 w-100 ">hi</div>;
   } else {
     const { getRecipe } = cardData;
-    return getRecipe.map((recipe,key) => {
-      
+    return getRecipe.map((recipe, key) => {
       const calories = recipe.calories;
-      
+
       const healthLabels = recipe.healthLabels; //array of strings
-      
+
       const image = recipe.image; //string
       const ingredients = recipe.ingredients; //array of string
       const label = recipe.label; //String
       const mealType = recipe.mealType; //array of string
       return (
         <>
-          <div key={key} className="group bg-slate-200">
-          <h3 className="mt-4 text-sm text-gray-700">{label}</h3>
+          <div key={key} className="group bg-green-700 rounded p-3" >
+            <h3 className="mt-4 text-lg text-white">{label}</h3>
             <MealType mealType={mealType} />
             <p>{Math.floor(calories)} Calories</p>
             {/* <HealthLabels healthLabels={healthLabels} /> */}
             <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-            <img src={image} className="h-full w-full object-cover object-center group-hover:opacity-75"/>
+              <img
+                src={image}
+                className="h-full w-full object-cover object-center group-hover:opacity-75"
+              />
             </div>
             {/* <Ingredients ingredients={ingredients} /> */}
-            
-            </div>
-          
+          </div>
         </>
       );
     });

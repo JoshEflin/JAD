@@ -62,11 +62,11 @@ function App() {
               <Route
                 path='/Profile'
                 element={<Profile />}
-              /> */}
-              {/* <Route
-              path='/products'
-              element={<Grocery />} */}
-              {/* /> */}
+              />
+              <Route
+              path='/recipes'
+              element={<Recipe />}
+              />
             </Routes>
           </div>
           <Footer />

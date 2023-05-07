@@ -10,7 +10,7 @@ const Home = () => {
         <main>
             <div>
                 <div>
-                    <h1>placeholder</h1>
+                    <h1>placeholder test</h1>
                     {/* <Grocery /> */}
                 </div>
             </div>

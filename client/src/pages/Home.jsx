@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 
-import Grocery from '../components/Grocery'
+import Grocery from '../components/Recipe'
 
 const Home = () => {
     // const { loading, data } = useQuery();
@@ -11,7 +11,7 @@ const Home = () => {
             <div>
                 <div>
                     <h1>placeholder</h1>
-                    {/* <Grocery /> */}
+                    <Grocery />
                 </div>
             </div>
         </main>

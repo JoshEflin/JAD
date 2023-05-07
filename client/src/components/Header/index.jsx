@@ -5,30 +5,46 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom';
 import Profile from '../../pages/Profile'
 
-import Auth from '../../utils/auth';
+import Auth from "../../utils/auth";
 
 const navigation = [
-    { name: 'Home', href: '#', current: true },
-    { name: 'Recipes', href: '#', current: false },
-    { name: 'Products', href: '#', current: false },
-  ]
+  { name: "Home", href: "home" },
+  { name: "Recipes", href: "recipes" },
+  { name: "Products", href: "products" },
+];
 // need to add a handleclick to set current to true when clicked
 // const [isCurrent, setIsCurrent]= useState('Home')
-// const handleNavClick = () => {
-
-// }
 
 function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-  }
+  return classes.filter(Boolean).join(" ");
+}
 
+const NavComponent = ({ navigation, isCurrent, handleNavClick }) => {
+  return navigation.map((item) => (
+    <Link
+      to={`/${item.href}`}
+      key={item.name}
+      onClick={() => handleNavClick(`${item.name}`)}
+      className={classNames(
+        isCurrent === item.name
+          ? "bg-gray-900 text-white"
+          : "text-gray-300 hover:bg-gray-700 hover:text-white",
+        "rounded-md px-3 py-2 text-sm font-medium"
+      )}
+      aria-current={item.current ? "page" : undefined}
+    >
+      {item.name}
+    </Link>
+  ));
+};
 const Header = () => {
-    const logout = (event) => {
-      event.preventDefault();
-      Auth.logout();
-    };
-    return (
-        <Disclosure as="nav" className="bg-gray-800">
+  const [isCurrent, setIsCurrent] = useState("Home");
+  const handleNavClick = (clicked) => {
+    return setIsCurrent(clicked);
+  };
+
+  return (
+    <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -59,19 +75,25 @@ const Header = () => {
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
-                    {navigation.map((item) => (
-                      <a
+                    <NavComponent
+                      navigation={navigation}
+                      isCurrent={isCurrent}
+                      handleNavClick={handleNavClick}
+                    />
+                    {/* {navigation.map((item) => (
+                      <Link
+                        to = {`/${item.href}`}
                         key={item.name}
-                        href={item.href}
+                        onClick= {()=>handleNavClick(`${item.name}`)}
                         className={classNames(
-                          item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                          isCurrent===item.name ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                           'rounded-md px-3 py-2 text-sm font-medium'
                         )}
                         aria-current={item.current ? 'page' : undefined}
                       >
                         {item.name}
-                      </a>
-                    ))}
+                      </Link>
+                    ))} */}
                   </div>
                 </div>
               </div>
@@ -79,22 +101,30 @@ const Header = () => {
                 {/* <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
                   Login
                 </button> */}
-                {Auth.loggedIn() ? (
-                  <>
-                    <Link className='text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium' onClick={logout}>
-                      Logout
-                    </Link>
-                  </>
-                ) : (
-                  <>
-                    <Link className='text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium' to='/login'>
-                      Login
-                    </Link>
-                    <Link className='text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium' to='/signup'>
-                      Signup
-                    </Link>
-                  </>
-                )}
+                <Link
+                  onClick={() => handleNavClick("Login")}
+                  className={classNames(
+                    isCurrent === "Login"
+                      ? "bg-gray-900 text-white"
+                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                    "rounded-md px-3 py-2 text-sm font-medium"
+                  )}
+                  to="/login"
+                >
+                  Login
+                </Link>
+                <Link
+                  className={classNames(
+                    isCurrent === "Signup"
+                      ? "bg-gray-900 text-white"
+                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                    "rounded-md px-3 py-2 text-sm font-medium"
+                  )}
+                  onClick={() => handleNavClick("Signup")}
+                  to="/signup"
+                >
+                  Signup
+                </Link>
                 <button
                   type="button"
                   className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -138,7 +168,10 @@ const Header = () => {
                         {({ active }) => (
                           <a
                             href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
                           >
                             Settings
                           </a>
@@ -159,10 +192,12 @@ const Header = () => {
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block rounded-md px-3 py-2 text-base font-medium'
+                    item.current
+                      ? "bg-gray-900 text-white"
+                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                    "block rounded-md px-3 py-2 text-base font-medium"
                   )}
-                  aria-current={item.current ? 'page' : undefined}
+                  aria-current={item.current ? "page" : undefined}
                 >
                   {item.name}
                 </Disclosure.Button>
@@ -172,7 +207,7 @@ const Header = () => {
         </>
       )}
     </Disclosure>
-    )
-}
+  );
+};
 
-export default Header
+export default Header;

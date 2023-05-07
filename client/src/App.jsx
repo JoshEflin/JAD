@@ -11,10 +11,11 @@ import { useState } from 'react'
 import Home from './pages/Home'
 import Signup from './pages/Signup'
 import Login from './pages/Login'
+import Recipe from './components/Recipe';
 import Profile from './pages/Profile'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import Grocery from './components/Grocery'
+// import Grocery from './components/Grocery'
 import Homepage from './components/Homepage'
 import './App.css'
 
@@ -61,7 +62,7 @@ function App() {
               <Route
                 path='/Profile'
                 element={<Profile />}
-              />
+              /> */}
               {/* <Route
               path='/products'
               element={<Grocery />} */}

@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 const Homepage = () => {
     return (
         <div>
-        <Carousel touch={true} className='my-5'>
+        <Carousel touch={true} className='mx-10 my-5 h-'>
             <Carousel.Item>
                 <img
                 className="d-block w-100"

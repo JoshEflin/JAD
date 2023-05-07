@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import recipeIcon from '../../assets/recipeicon.png'
 import groceryIcon from '../../assets/groceryicon.png'
-import { Carousel } from 'react-bootstrap';
+import Carousel from 'react-bootstrap/Carousel';
+import 'bootstrap/dist/css/bootstrap.css';
 
 const Homepage = () => {
     return (
         <div>
-        <Carousel touch={true}>
+        <Carousel touch={true} className='my-5'>
             <Carousel.Item>
                 <img
                 className="d-block w-100"
@@ -34,7 +35,7 @@ const Homepage = () => {
             <h1 className=''>Check out our categories!</h1>
             <div className='flex flex-row justify-center'>
                 <div className='flex-col'>
-                    <Link className='inline-block m-5' to=''>
+                    <Link className='m-5' to=''>
                         <img src={recipeIcon} className='w-40 h-40'/>
                     </Link>
                     <h2>Recipes</h2>

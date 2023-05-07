@@ -11,7 +11,7 @@ import { useState } from 'react'
 import Home from './pages/Home'
 import Signup from './pages/Signup'
 import Login from './pages/Login'
-import Grocery from './components/Grocery';
+import Recipe from './components/Recipe';
 // import Profile from './pages/Profile'
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -62,7 +62,7 @@ function App() {
               /> */}
               <Route
               path='/recipes'
-              element={<Grocery />}
+              element={<Recipe />}
                /> 
             </Routes>
           </div>

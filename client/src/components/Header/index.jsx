@@ -42,9 +42,13 @@ const Header = () => {
   const handleNavClick = (clicked) => {
     return setIsCurrent(clicked);
   };
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
 
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="bg-green-800">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -101,6 +105,14 @@ const Header = () => {
                 {/* <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
                   Login
                 </button> */}
+                {Auth.loggedIn() ? (
+                  <>
+                    <Link className='text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium' onClick={logout}>
+                      Logout
+                    </Link>
+                  </>
+                ) : (
+                <>
                 <Link
                   onClick={() => handleNavClick("Login")}
                   className={classNames(
@@ -125,6 +137,8 @@ const Header = () => {
                 >
                   Signup
                 </Link>
+                </>
+                )}
                 <button
                   type="button"
                   className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"

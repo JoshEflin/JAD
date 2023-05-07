@@ -15,7 +15,8 @@ import Recipe from './components/Recipe';
 import Profile from './pages/Profile'
 import Header from './components/Header'
 import Footer from './components/Footer'
-
+// import Grocery from './components/Grocery'
+import Homepage from './components/Homepage'
 import './App.css'
 
 const httpLink = createHttpLink({
@@ -43,6 +44,7 @@ function App() {
       <Router>
         <div>
           <Header />
+          <Homepage />
           <div>
             <Routes>
               <Route
@@ -60,11 +62,11 @@ function App() {
               <Route
                 path='/Profile'
                 element={<Profile />}
-              /> 
-              <Route
-              path='/recipes'
-              element={<Recipe />}
-               /> 
+              /> */}
+              {/* <Route
+              path='/products'
+              element={<Grocery />} */}
+              {/* /> */}
             </Routes>
           </div>
           <Footer />

@@ -15,6 +15,7 @@
     "concurrently": "^8.0.1"
   },
   "dependencies": {
+    "bootstrap": "^5.2.3",
     "dotenv": "^16.0.3",
     "git-filter-repo": "^0.0.30",
     "react-avatar-edit": "^1.2.0"

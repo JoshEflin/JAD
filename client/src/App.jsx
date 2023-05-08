@@ -76,7 +76,7 @@ function App() {
                 element={<Cancel />}
               />
               <Route
-              path='/products'
+              path='/recipes'
               element={<Recipe />}
               />
 

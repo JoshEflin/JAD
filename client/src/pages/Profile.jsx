@@ -3,7 +3,7 @@ import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import Avatar from 'react-avatar-edit'
 
-// import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import { QUERY_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
 
@@ -21,6 +21,15 @@ const Profile = () => {
           elem.target.value = "";
         }
       }
+
+      const { loading, data } = useQuery(QUERY_ME);
+
+      if (loading) {
+        return <div>Loading...</div>;
+      }
+    
+      const { username, email } = data.me;
+
     return (
         <div className='text-center justify-center h-full my-10'>
             <h1>Profile</h1>
@@ -38,9 +47,9 @@ const Profile = () => {
             </div>
                 {/* {preview && <img src={preview} alt="Preview" />} */}
             <p>Username:</p>
-            <p className='bg-gray-300 p-2 rounded-md text-lg inline-block'>Alexander1262</p>
+            <p className='bg-gray-300 p-2 rounded-md text-lg inline-block'>{username}</p>
             <p>Email:</p>
-            <p className='bg-gray-300 p-2 rounded-md text-lg inline-block'>weisssander@gmail.com</p>
+            <p className='bg-gray-300 p-2 rounded-md text-lg inline-block'>{email}</p>
         </div>
     )
 }

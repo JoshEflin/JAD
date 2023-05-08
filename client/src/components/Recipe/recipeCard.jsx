@@ -1,75 +1,20 @@
-import { useState, } from "react";
-import FullRecipe from './FullRecipe'
-
-export const HealthLabels = ({ healthLabels }) => {
-  // console.log(healthLabels)
-
-  const labelSpan = healthLabels.map((val, i) => {
-    console.log(val);
-    return <span key={i}>{val}</span>;
-  });
-  return labelSpan;
-};
-export const Ingredients = ({ ingredients }) => {
-  // console.log(healthLabels)
-
-  const ingredientSpan = ingredients.map((val, i) => {
-    console.log(val);
-    return (
-      <div key={i}>
-        <span>{val.food}</span>
-        {/* <span >{val.foodId}</span> */}
-        <img src={val.image} />
-        <span>{val.measure}</span>
-        <span>{val.quantity}</span>
-        <span>{val.text}</span>
-        <span>{val.weight}</span>
-      </div>
-    );
-  });
-  return ingredientSpan;
-};
-export const MealType = ({ mealType }) => {
-  // console.log(healthLabels)
-
-  return mealType.map((val, i) => {
-    const types = val.split("/");
-    console.log(types);
-    if (types[1]) {
-      return (
-        <>
-          <div key={i}>
-            <span className=" rounded p-2 text-lg"> Perfect for {types[0]} or {types[1]} </span>
-          </div>
-        </>
-      );
-    } else {
-      return (
-        <div key={i}>
-          <span className=" rounded p-2 text-lg">Perfect for {types[0]}</span>
-        </div>
-      );
-    }
-  });
-};
+import { useState } from "react";
+import FullRecipe from "./FullRecipe";
+import { HealthLabels, Ingredients,MealType } from "./utils";
 
 
- 
-// import { GET_RECIPE } from '../../utils/mutations'
 export function RecipeCard({ cardData }) {
   const [animatedCardIndex, setAnimatedCardIndex] = useState(-1);
   const [showModal, setShowModal] = useState(false);
 
-  
-  
   const handleAnimation = (index) => {
     setAnimatedCardIndex(index);
-    setShowModal(true)
+    setShowModal(true);
   };
-  const closeModal = ()=> {
-    setShowModal(false)
-  }
-  
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
   if (cardData === null) {
     return <div className="box-border h-100 w-100 ">Something Went Wrong</div>;
   } else {
@@ -87,7 +32,7 @@ export function RecipeCard({ cardData }) {
         <div
           key={index}
           className={`group bg-green-700 rounded p-3 ${
-            isAnimated ? 'animate-puffOut' : ''
+            isAnimated ? "animate-puffOut" : ""
           }`}
           onClick={() => handleAnimation(index)}
         >
@@ -102,7 +47,6 @@ export function RecipeCard({ cardData }) {
             />
           </div>
           {/* <Ingredients ingredients={ingredients} /> */}
-          
         </div>
       );
     });

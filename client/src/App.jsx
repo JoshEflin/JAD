@@ -16,6 +16,9 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Grocery from './components/Grocery'
 import './App.css'
+import Cancel from './pages/Cancel'
+import Success from './pages/Success'
+import CartProvider from './utils/cartContext';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -38,7 +41,8 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <ApolloProvider client={client}>
+    <CartProvider>
+     <ApolloProvider client={client}>
       <Router>
         <div>
           <Header />
@@ -59,17 +63,27 @@ function App() {
               <Route
                 path='/Profile'
                 element={<Profile />}
-              /> */}
+              /> 
+               <Route
+                path='/success'
+                element={<Success />}
+              />
+               <Route
+                path='/cancel'
+                element={<Cancel />}
+              />
               {/* <Route
               path='/products'
               element={<Grocery />} */}
               {/* /> */}
+
             </Routes>
           </div>
           <Footer />
         </div>
       </Router>
-    </ApolloProvider>
+     </ApolloProvider>
+    </CartProvider>
   )
 }
 

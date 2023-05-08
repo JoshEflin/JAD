@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
+import Auth from "../../utils/auth"
 
 const NavComponent = ({ navigation, isCurrent, handleNavClick, classNames, }) => {
+  
     return navigation.map((item) => (
       <Link
         to={`/${item.href}`}

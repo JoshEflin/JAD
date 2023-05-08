@@ -12,7 +12,6 @@ const leftNav = [
   { name: "Recipes", href: "recipes" },
   { name: "Products", href: "products" },
 ];
-
 const rightNav = [
   { name: "Login", href: "login"},
   { name: "Signup", href: "signup"},
@@ -20,7 +19,6 @@ const rightNav = [
 const showLogOut = [
   { name: "Logout", href: "logout"}
 ]
-
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -30,7 +28,7 @@ function classNames(...classes) {
 const Header = () => {
   const [openM, setOpen] = useState(false)
   const handleShow = () => setOpen(true);
-    const cancelButtonRef = useRef(null)
+  const cancelButtonRef = useRef(null)
   
     const logout = (event) => {
       event.preventDefault();

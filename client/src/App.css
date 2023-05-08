@@ -44,3 +44,23 @@
 .read-the-docs {
   color: #888;
 }
+
+/* recipe card */
+@keyframes puffOut {
+  0% {
+    opacity: 1;
+    transform-origin: 50% 50%;
+    transform: scale(1, 1);
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 0;
+    transform-origin: 50% 50%;
+    transform: scale(1.5, 1.5);
+    filter: blur(2px);
+  }
+}
+
+.puffOut {
+  animation-name: puffOut;
+}

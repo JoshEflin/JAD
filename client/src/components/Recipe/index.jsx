@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { RecipeCard } from "./recipeCard";
+import { RecipeCard } from "./RecipeCard";
 import { GET_RECIPE } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 

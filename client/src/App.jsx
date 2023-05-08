@@ -15,7 +15,7 @@ import Recipe from './components/Recipe';
 import Profile from './pages/Profile'
 import Header from './components/Header'
 import Footer from './components/Footer'
-// import Grocery from './components/Grocery'
+
 import Homepage from './components/Homepage'
 import './App.css'
 import Cancel from './pages/Cancel'
@@ -49,6 +49,7 @@ function App() {
         <div>
           <Header />
           <Homepage />
+          
           <div>
             <Routes>
               <Route
@@ -76,7 +77,7 @@ function App() {
                 element={<Cancel />}
               />
               <Route
-              path='/products'
+              path='/recipes'
               element={<Recipe />}
               />
 

@@ -8,6 +8,7 @@ import { QUERY_ITEMS } from '../utils/queries';
 import React, { useState, useContext} from 'react';
 import { CartContext } from '../utils/cartContext';
 
+import Grocery from '../components/Recipe'
 
 const Home = () => {
     const cart = useContext(CartContext);

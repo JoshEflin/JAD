@@ -27,5 +27,4 @@ query me {
     username
     email
   }
-}
-`
+}`;

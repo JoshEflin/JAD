@@ -8,19 +8,14 @@ import Profile from '../../pages/Profile'
 import Auth from "../../utils/auth";
 
 const leftNav = [
-  { name: "Home", href: "home" },
+  { name: "Home", href: "#" },
   { name: "Recipes", href: "recipes" },
   { name: "Products", href: "products" },
 ];
-
 const rightNav = [
   { name: "Login", href: "login"},
   { name: "Signup", href: "signup"},
 ]
-const showLogOut = [
-  { name: "Logout", href: "logout"}
-]
-
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -30,7 +25,7 @@ function classNames(...classes) {
 const Header = () => {
   const [openM, setOpen] = useState(false)
   const handleShow = () => setOpen(true);
-    const cancelButtonRef = useRef(null)
+  const cancelButtonRef = useRef(null)
   
     const logout = (event) => {
       event.preventDefault();
@@ -153,13 +148,11 @@ const Header = () => {
                {/* LOGIN LOGOUT CART GOES HERE */}
 
                 {Auth.loggedIn() ? (
-                  <NavComponent
-                  navigation={showLogOut}
-                  isCurrent={isCurrent}
-                  handleNavClick={logout}
-                  classNames={classNames}
-                  
-                  />
+                  <>
+                  <Link className='text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium' onClick={logout}>
+                  Logout
+                </Link> 
+                </>
                 ) : (
                 <NavComponent
                 navigation={rightNav}

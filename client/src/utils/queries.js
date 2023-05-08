@@ -16,6 +16,7 @@ query GetItems {
       name
       price
       stock
+      photo
     }
   }`;
 

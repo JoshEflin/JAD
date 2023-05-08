@@ -20,7 +20,7 @@ const Home = () => {
     // const productQuantity = cart.GetQuantity(products.name);
     return (
         <main>      
-            <Container className=''>
+            <Container>
                         <h1>Welcome to the store!</h1>
                             <h2 className='pt-5'>
                             {products.length
@@ -33,7 +33,7 @@ const Home = () => {
                                     <Row xs={1} md={3} key={products._id} className="basis-1/4 bg-white-100 rounded border-double border-4 border-slate-600 shadow-xl">
                                 <Col md="4" align="center"key={product._id}>
                                     <Card border='dark'>
-                                    {product.image ? <Card.Img src={product.image} alt={`The picture for ${product.name}`} variant='top' /> : null}
+                                    {product.photo ? <Card.Img src={product.photo} alt={`The picture for ${product.name}`} variant='top' /> : null}
                                     <Card.Body>
                                         <Card.Title>{product.name}</Card.Title>
                                         <p className='small'>Price: ${product.price}</p>

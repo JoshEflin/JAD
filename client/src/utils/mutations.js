@@ -50,6 +50,7 @@ mutation Item($foodItem: String!) {
     name
     price
     stock
+    photo
   }
 }
   `;
@@ -60,6 +61,7 @@ mutation Stock($name: String, $stock: Int) {
     name
     price
     stock
+    photo
   }
 }
  `;

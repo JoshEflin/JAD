@@ -75,10 +75,10 @@ function App() {
                 path='/cancel'
                 element={<Cancel />}
               />
-              {/* <Route
+              <Route
               path='/products'
-              element={<Grocery />} */}
-              {/* /> */}
+              element={<Recipe />}
+              />
 
             </Routes>
           </div>

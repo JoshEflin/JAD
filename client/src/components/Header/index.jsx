@@ -2,40 +2,29 @@ import React, { Fragment, useRef, useState, } from 'react';
 import { Disclosure, Menu, Transition, Dialog } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom';
+import NavComponent from './NavComponent';
 import Profile from '../../pages/Profile'
 
 import Auth from "../../utils/auth";
 
-const navigation = [
+const leftNav = [
   { name: "Home", href: "home" },
   { name: "Recipes", href: "recipes" },
   { name: "Products", href: "products" },
 ];
-// need to add a handleclick to set current to true when clicked
-// const [isCurrent, setIsCurrent]= useState('Home')
+const rightNav = [
+  { name: "Login", href: "login"},
+  { name: "Signup", href: "signup"},
+]
+const showLogOut = [
+  { name: "Logout", href: "logout"}
+]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const NavComponent = ({ navigation, isCurrent, handleNavClick }) => {
-  return navigation.map((item) => (
-    <Link
-      to={`/${item.href}`}
-      key={item.name}
-      onClick={() => handleNavClick(`${item.name}`)}
-      className={classNames(
-        isCurrent === item.name
-          ? "bg-gray-900 text-white"
-          : "text-gray-300 hover:bg-gray-700 hover:text-white",
-        "rounded-md px-3 py-2 text-sm font-medium"
-      )}
-      aria-current={item.current ? "page" : undefined}
-    >
-      {item.name}
-    </Link>
-  ));
-};
+
 const Header = () => {
   const [openM, setOpen] = useState(false)
   const handleShow = () => setOpen(true);
@@ -150,52 +139,33 @@ const Header = () => {
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     <NavComponent
-                      navigation={navigation}
+                      navigation={leftNav}
                       isCurrent={isCurrent}
                       handleNavClick={handleNavClick}
+                      classNames = {classNames}
                     />
                     
                   </div>
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                {/* <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
-                  Login
-                </button> */}
+               {/* LOGIN LOGOUT CART GOES HERE */}
+
                 {Auth.loggedIn() ? (
-                  <>
-                    <Link className='text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium' onClick={logout}>
-                      Logout
-                    </Link>
-                    
-                  </>
+                  <NavComponent
+                  navigation={showLogOut}
+                  isCurrent={isCurrent}
+                  handleNavClick={logout}
+                  classNames={classNames}
+                  
+                  />
                 ) : (
-                <>
-                <Link
-                  onClick={() => handleNavClick("Login")}
-                  className={classNames(
-                    isCurrent === "Login"
-                      ? "bg-gray-900 text-white"
-                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                    "rounded-md px-3 py-2 text-sm font-medium"
-                  )}
-                  to="/login"
-                >
-                  Login
-                </Link>
-                <Link
-                  className={classNames(
-                    isCurrent === "Signup"
-                      ? "bg-gray-900 text-white"
-                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                    "rounded-md px-3 py-2 text-sm font-medium"
-                  )}
-                  onClick={() => handleNavClick("Signup")}
-                  to="/signup"
-                >
-                  Signup
-                </Link>
-                </>
+                <NavComponent
+                navigation={rightNav}
+                isCurrent={isCurrent}
+                handleNavClick={handleNavClick}
+                classNames={classNames}
+                 />
                 )}
                 <button className="text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium" onClick={handleShow}>Cart 0 Items</button>
                 <button
@@ -260,7 +230,7 @@ const Header = () => {
 
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
-              {navigation.map((item) => (
+              {leftNav.map((item) => (
                 <Disclosure.Button
                   key={item.name}
                   as="a"

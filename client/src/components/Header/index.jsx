@@ -3,16 +3,6 @@ import { Disclosure, Menu, Transition, Dialog } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom';
 import Profile from '../../pages/Profile'
-<<<<<<< HEAD
-import Auth from '../../utils/auth';
-
-const navigation = [
-    { name: 'Home', href: '#', current: true },
-    { name: 'Recipes', href: '#', current: false },
-    { name: 'Products', href: '#', current: false },
-    
-  ]
-=======
 
 import Auth from "../../utils/auth";
 
@@ -21,7 +11,6 @@ const navigation = [
   { name: "Recipes", href: "recipes" },
   { name: "Products", href: "products" },
 ];
->>>>>>> aae0a6a539d6f8b0bbf6b34fb59127edc48b6513
 // need to add a handleclick to set current to true when clicked
 // const [isCurrent, setIsCurrent]= useState('Home')
 
@@ -48,7 +37,6 @@ const NavComponent = ({ navigation, isCurrent, handleNavClick }) => {
   ));
 };
 const Header = () => {
-<<<<<<< HEAD
   const [openM, setOpen] = useState(false)
   const handleShow = () => setOpen(true);
     const cancelButtonRef = useRef(null)
@@ -57,22 +45,13 @@ const Header = () => {
       event.preventDefault();
       Auth.logout();
     };
-
-    return (
-        <Disclosure as="nav" className="bg-gray-800">
-=======
   const [isCurrent, setIsCurrent] = useState("Home");
   const handleNavClick = (clicked) => {
     return setIsCurrent(clicked);
   };
-  const logout = (event) => {
-    event.preventDefault();
-    Auth.logout();
-  };
-
+ 
   return (
     <Disclosure as="nav" className="bg-green-800">
->>>>>>> aae0a6a539d6f8b0bbf6b34fb59127edc48b6513
       {({ open }) => (
         <>
          <Transition.Root show={openM} as={Fragment}>
@@ -313,13 +292,8 @@ const Header = () => {
         </>
       )}
     </Disclosure>
-<<<<<<< HEAD
     
     )
 }
-=======
-  );
-};
->>>>>>> aae0a6a539d6f8b0bbf6b34fb59127edc48b6513
 
 export default Header;

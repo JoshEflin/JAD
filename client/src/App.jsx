@@ -15,7 +15,7 @@ import Recipe from './components/Recipe';
 import Profile from './pages/Profile'
 import Header from './components/Header'
 import Footer from './components/Footer'
-
+import Products from './components/Products';
 import Homepage from './components/Homepage'
 import './App.css'
 import Cancel from './pages/Cancel'
@@ -43,9 +43,11 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <CartProvider>
+    
      <ApolloProvider client={client}>
+      
       <Router>
+        <CartProvider>
         <div>
           <Header />
           <div>
@@ -67,8 +69,8 @@ function App() {
                 element={<Profile />}
               /> 
                <Route
-                path='/success'
-                element={<Success />}
+                path='/products'
+                element={<Products />}
               />
                <Route
                 path='/cancel'
@@ -83,9 +85,10 @@ function App() {
           </div>
           <Footer />
         </div>
+        </CartProvider>
       </Router>
      </ApolloProvider>
-    </CartProvider>
+    
   )
 }
 

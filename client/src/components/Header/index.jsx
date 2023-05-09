@@ -1,9 +1,11 @@
-import { Fragment, useRef, useState, } from 'react';
+import { Fragment, useRef, useState, useContext } from 'react';
 import { Disclosure, Menu, Transition, Dialog } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom';
 import NavComponent from './NavComponent';
 import Profile from '../../pages/Profile'
+import { CartContext } from '../../utils/cartContext';
+import { Button } from 'react-bootstrap';
 
 import Auth from "../../utils/auth";
 
@@ -26,6 +28,7 @@ const Header = () => {
   const [openM, setOpen] = useState(false)
   const handleShow = () => setOpen(true);
   const cancelButtonRef = useRef(null)
+  const cart = useContext(CartContext);
   
     const logout = (event) => {
       event.preventDefault();
@@ -36,7 +39,7 @@ const Header = () => {
   const handleNavClick = (clicked) => {
     return setIsCurrent(clicked);
   };
-
+const productsCount = cart.items.reduce((sum, product)=> sum + product.stock,0);
   return (
     <Disclosure as="nav" className="bg-green-800">
       {({ open }) => (
@@ -76,21 +79,34 @@ const Header = () => {
                                                 SHOPPING CART
                                             </Dialog.Title>
                                             <div className="mt-2">
-                                                <p className="text-sm text-gray-500">
-                                                    Your listed Items here!
-                                                </p>
+                                                
+                                                  {productsCount > 0 ?
+                                                <>
+                                                <p className="text-sm text-gray-500">Items in the cart:</p>
+                                                {cart.items.map((currentProduct) => (
+                                                <>
+                                                <h1 key={currentProduct.id}>{currentProduct.foodItem}</h1>
+                                                <p> Quantity: {currentProduct.stock}</p>
+                                                <p>Price: ${currentProduct.price} </p>
+                                                <Button className='mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto' onClick={()=> cart.DeletefromCart(currentProduct.foodItem)}>Remove</Button>
+                                                <hr></hr>
+                                                 </>
+                                                ))}
+                                                <h2>Total: {cart.GetTotalCost().toFixed(2)}</h2>
+                                                
+                                                </>  
+                                                : <h2>Your cart is empty!</h2>
+                                                }
+                                                
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                
                                 <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                                    <button
-                                        type="button"
-                                        className="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 sm:ml-3 sm:w-auto"
-                                        onClick={() => setOpen(false)}
-                                    >
-                                        Checkout
-                                    </button>
+                                <Button className='mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto'>
+                                                  Purchase items!
+                                                </Button>
                                     <button
                                         type="button"
                                         className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
@@ -161,7 +177,7 @@ const Header = () => {
                 classNames={classNames}
                  />
                 )}
-                <button className="text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium" onClick={handleShow}>Cart 0 Items</button>
+                <button className="text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium" onClick={handleShow}>Cart {productsCount} Items</button>
                 <button
                   type="button"
                   className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"

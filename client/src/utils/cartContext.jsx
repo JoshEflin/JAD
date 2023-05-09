@@ -7,6 +7,7 @@ import { GET_ITEM, UPDATE_INVENTORY } from "./mutations";
 export const CartContext = createContext({
     items: [],
     GetQuantity: () => { },
+    CartQuantity: () => {},
     AddOnetoCart: () => { },
     RemoveOnefromCart: () => { },
     DeletefromCart: () => { },
@@ -18,7 +19,6 @@ export default function CartProvider({ children }) {
  const [cartProducts, setCartProducts] = useState([]);
 
     async function GetQuantity(name) {
-        console.log(name);
         try {
         const quantity = await getQuantity({
             variables: { foodItem:  name  },
@@ -27,47 +27,58 @@ export default function CartProvider({ children }) {
         if (quantity === undefined) {
             return 0;
         }
-        const stock = quantity.data.item.stock;
-        console.log(quantity.data.item.stock);
-
+        const stock = {stock: quantity.data.item.stock, price: quantity.data.item.price};
         return stock
         } catch (err) {
             console.error(err);
         }
     }
+     function CartQuantity(name) {
+        const quantity = cartProducts.find(product => product.foodItem === name)?.stock;
 
-    function AddOnetoCart(name) {
-        const quantity = GetQuantity(name);
-        console.log(quantity)
-        if (quantity === 0) {
-            setCartProducts(
+        if (quantity === undefined) {
+            return 0;
+        }
+        return quantity;
+    }
+
+     function AddOnetoCart (name) {
+        const quantity = GetQuantity(name)
+        {quantity.then((data)=>{ 
+            const price = data.price;
+            const cart = CartQuantity(name);
+             if (cart === 0) {
+                 setCartProducts(
                 [...cartProducts,
                 {
                     foodItem: name,
+                    price: price,
                     stock: 1
                 }]
-            )
+            )   
         } else {
             setCartProducts(
                 cartProducts.map(
                     product =>
-                        product.name === name ? { ...product, stock: product.stock + 1 }
-                            : product
+                        product.foodItem === name  ? { ...product, price: price , stock: product.stock + 1 }
+                            : product           
                 )
             )
+           
+            }
+        })}
         }
-    }
 
-    function RemoveOnefromCart(name) {
-        const quantity = GetQuantity(name);
+     function RemoveOnefromCart(name) {
+        const quantity = CartQuantity(name);
 
-        if (quantity == 1) {
+        if (quantity === 1) {
             DeletefromCart(name);
         } else {
             setCartProducts(
                 cartProducts.map(
                     product =>
-                        product.name === name
+                        product.foodItem === name
                             ? { ...product, stock: product.stock - 1 }
                             : product
                 )
@@ -79,7 +90,7 @@ export default function CartProvider({ children }) {
         setCartProducts(
             cartProducts =>
                 cartProducts.filter(currentProduct => {
-                    return currentProduct.name != name;
+                    return currentProduct.foodItem != name;
                 })
         )
     }
@@ -88,15 +99,19 @@ export default function CartProvider({ children }) {
         
         let totalCost = 0;
         cartProducts.map((cartItem) => {
-            const productData = getQuantity(cartItem.name);
-            totalCost += (productData.price * cartItem.quantity);
+            const productData = CartQuantity(cartItem.foodItem);
+            console.log({cartitem: cartItem.stock});
+            console.log({cart:productData})
+            totalCost += (cartItem.price * cartItem.stock);
         });
+        console.log(totalCost)
         return totalCost;
     }
 
     const contextValue = {
         items: cartProducts,
         GetQuantity,
+        CartQuantity,
         AddOnetoCart,
         RemoveOnefromCart,
         DeletefromCart,
@@ -113,4 +128,6 @@ export default function CartProvider({ children }) {
 
     )
 }
+
+
 

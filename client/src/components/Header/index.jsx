@@ -8,7 +8,7 @@ import Profile from '../../pages/Profile'
 import Auth from "../../utils/auth";
 
 const leftNav = [
-  { name: "Home", href: "home" },
+  { name: "Home", href: "#" },
   { name: "Recipes", href: "recipes" },
   { name: "Products", href: "products" },
 ];

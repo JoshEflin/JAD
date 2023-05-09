@@ -48,13 +48,11 @@ function App() {
       <Router>
         <div>
           <Header />
-          <Homepage />
-          
           <div>
             <Routes>
               <Route
                 path='/'
-                element={<Home />}
+                element={<Homepage />}
               />
               <Route
                 path='/login'

@@ -1,5 +1,5 @@
 import { useState,useEffect } from "react";
-import { MealType, Ingredients, HealthLabels } from "./recipeCard";
+import { MealType, Ingredients, HealthLabels } from "./RecipeCard";
 export default function FullRecipe({recipe, closeModal}) {
     
     

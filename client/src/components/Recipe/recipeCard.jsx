@@ -2,18 +2,18 @@ import { useState } from "react";
 
 import { HealthLabels, Ingredients, MealType } from "./utils";
 
-export function RecipeCard({ cardData}) {
+export function RecipeCard({ cardData }) {
   const [viewFullRecipe, setViewFullRecipe] = useState(false);
   const [animatedCardIndex, setAnimatedCardIndex] = useState(-1);
 
   const handleClick = (index) => {
     setAnimatedCardIndex(index);
-    setViewFullRecipe(!viewFullRecipe)
+    setViewFullRecipe(!viewFullRecipe);
   };
-  const handleModalClick = ()=>{
-    setAnimatedCardIndex(-1)
+  const handleModalClick = () => {
+    setAnimatedCardIndex(-1);
     setViewFullRecipe(false);
-  }
+  };
 
   if (cardData === null) {
     return (
@@ -31,8 +31,8 @@ export function RecipeCard({ cardData}) {
       const label = getRecipe[animatedCardIndex].label;
       const mealType = getRecipe[animatedCardIndex].mealType;
       return (
-        <div >
-          <button onClick={() => handleModalClick()}> CLOSE FULL RECIPE</button>
+        <div>
+          <button className="text-white right-2.5 bottom-2.5 bg-green-700 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-green-600 dark:hover:bg-green-500-700 dark:focus:ring-green-800" onClick={() => handleModalClick()}> CLOSE FULL RECIPE</button>
           <h3 className="mt-4 text-lg text-white">{label}</h3>
           <MealType mealType={mealType} />
           <p>{Math.floor(calories)} Calories</p>
@@ -50,9 +50,7 @@ export function RecipeCard({ cardData}) {
       return getRecipe.map((recipe, index) => {
         const isAnimated = animatedCardIndex === index;
         const calories = recipe.calories;
-        // const healthLabels = recipe.healthLabels; //array of strings
         const image = recipe.image; //string
-        // const ingredients = recipe.ingredients; //array of string
         const label = recipe.label; //String
         const mealType = recipe.mealType; //array of string
 

@@ -18,21 +18,21 @@ export default function CartProvider({ children }) {
  const [cartProducts, setCartProducts] = useState([]);
 
     async function GetQuantity(name) {
-        
-        // try {
+        console.log(name);
+        try {
         const data = await getQuantity({
-            variables: { name:  'salt'  },
+            variables: { foodItem:  name  },
         });
 
         if (data === undefined) {
             return 0;
         }
-        console.log(data);
-        //     setCartProducts([data.stock]);
-        return data.stock;
-        // } catch (err) {
-        //     console.error(err);
-        // }
+        console.log({ data });
+        console.log(data.data.item.stock);
+        return setCartProducts([data.data.item.stock]);
+        } catch (err) {
+            console.error(err);
+        }
     }
 
     function AddOnetoCart(name) {

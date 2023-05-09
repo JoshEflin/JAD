@@ -9,8 +9,10 @@ export default function Coupon({ item }) {
                 <p className='text-gray-600 mb-4'>{item.description}</p>
                 <div className='flex justify-around'>
                     <button className='text-sm underline font-semibold text-amber-800'>Offer Details</button>
-                    <button className='bg-green-500 p-1 rounded-xl m-2 text-white font-semibold hover:bg-green-600'>Clip Coupon</button>
+                    <button className='bg-green-500 py-2 px-4 rounded-xl text-white font-semibold shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50'>Clip Coupon</button>
                 </div>
+                <p className='text-sm pt-3'>One time use</p>
+                <p className='text-sm'>Expires 5/27/2023</p>
             </div>
         </div>
     )

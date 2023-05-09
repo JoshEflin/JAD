@@ -2,12 +2,16 @@ import React, { useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import Avatar from 'react-avatar-edit'
+import Dropzone from 'react-dropzone'
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
 
+
 const Profile = () => {
+    const [editedImage, setEditedImage] = useState(null);
+    const [preview, setPreview] = useState(null);
     const { username: userParam } = useParams();
 
     const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
@@ -24,7 +28,6 @@ const Profile = () => {
       return <div>Loading...</div>;
     }
 
-    const [preview, setPreview] = useState(null);
     function onClose() {
         setPreview(null);
       }
@@ -46,14 +49,17 @@ const Profile = () => {
                 <Avatar
                     width={200}
                     height={200}
-                    onCrop={onCrop}
+                    onCrop={(croppedImage) => setEditedImage(croppedImage)}
                     onClose={onClose}
                     onBeforeFileLoad={onBeforeFileLoad}
                     src={null}
                     className='block'
                 />
             </div>
-                {/* {preview && <img src={preview} alt="Preview" />} */}
+            {/* <button onClick={handleSave} className='inline-block'>Save Avatar</button> */}
+
+            {preview && <img src={preview} alt="Preview" />}
+            <p>Username:</p>
             <p className='bg-gray-300 p-2 rounded-md text-lg inline-block'>{user.username}</p>
             <p>Email:</p>
             <p className='bg-gray-300 p-2 rounded-md text-lg inline-block'>{user.email}</p>

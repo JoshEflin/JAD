@@ -1,10 +1,17 @@
 import { Link } from 'react-router-dom';
 import recipeIcon from '../../assets/recipeicon.png'
 import groceryIcon from '../../assets/groceryicon.png'
-import Carousel from 'react-bootstrap/Carousel';
-import 'bootstrap/dist/css/bootstrap.css';
+// import Carousel from 'react-bootstrap/Carousel';
+// import 'bootstrap/dist/css/bootstrap.css';
 import Coupon from './Coupons'
 import couponData from './CouponData'
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Navigation, Pagination, Autoplay, Scrollbar } from "swiper";
+import "swiper/css";
+import "swiper/css/scrollbar";
+import 'swiper/swiper-bundle.css';
+
+SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 const Homepage = () => {
     return (
@@ -27,29 +34,29 @@ const Homepage = () => {
                 <div className='flex flex-row justify-center'>
                 </div>
         <div>
-            <Carousel touch={true} className='mx-10 my-5 h-'>
-                <Carousel.Item>
+            <Swiper className='mx-10 my-5 h-'>
+                <SwiperSlide>
                     <img
                     className="d-block w-100"
                     src="https://via.placeholder.com/800x400?text=Slide+1"
                     alt="First slide"
                     />
-                </Carousel.Item>
-                <Carousel.Item>
+                </SwiperSlide>
+                <SwiperSlide>
                     <img
                     className="d-block w-100"
                     src="https://via.placeholder.com/800x400?text=Slide+2"
                     alt="Second slide"
                     />
-                </Carousel.Item>
-                <Carousel.Item>
+                </SwiperSlide>
+                <SwiperSlide>
                     <img
                     className="d-block w-100"
                     src="https://via.placeholder.com/800x400?text=Slide+3"
                     alt="Third slide"
                     />
-                </Carousel.Item>
-            </Carousel>
+                </SwiperSlide>
+            </Swiper>
             </div>
             <h1 className='text-5xl font-semibold my-5'>Coupons & Deals</h1>
             <div className='flex flex-row my-5 flex-wrap'>

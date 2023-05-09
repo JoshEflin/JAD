@@ -10,10 +10,20 @@ import SwiperCore, { Navigation, Pagination, Autoplay, Scrollbar } from "swiper"
 import "swiper/css";
 import "swiper/css/scrollbar";
 import 'swiper/swiper-bundle.css';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 const Homepage = () => {
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+      };
     return (
         <div className='mt-10 mb-10'>
                 <h1 className='text-5xl font-semibold'>Check out our categories!</h1>
@@ -59,13 +69,13 @@ const Homepage = () => {
             </Swiper>
             </div>
             <h1 className='text-5xl font-semibold my-5'>Coupons & Deals</h1>
-            <div className='flex flex-row my-5 flex-wrap'>
-                <Coupon item={couponData[0]}/>
-                <Coupon item={couponData[1]}/>
-                <Coupon item={couponData[2]}/>
-                <Coupon item={couponData[3]}/>
-                <Coupon item={couponData[4]}/>
-            </div>
+            <Slider {...settings}>
+                <div className='flex flex-row my-5 flex-wrap'>
+                    {couponData.map((item, index) => (
+                        <Coupon key={index} item={item} />
+                    ))}
+                </div>
+            </Slider>
         </div>
     )
 }

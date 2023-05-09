@@ -14,6 +14,7 @@ const Products = () => {
   const { loading, data } = useQuery(QUERY_ITEMS);
   const products = data?.getItems || [];
   // const { loading, data } = useQuery();
+  console.log(cart.items);
   // const productQuantity = cart.GetQuantity(products.name);
   return (
       <main>      

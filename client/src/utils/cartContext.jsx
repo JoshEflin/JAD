@@ -20,16 +20,17 @@ export default function CartProvider({ children }) {
     async function GetQuantity(name) {
         console.log(name);
         try {
-        const data = await getQuantity({
+        const quantity = await getQuantity({
             variables: { foodItem:  name  },
         });
 
-        if (data === undefined) {
+        if (quantity === undefined) {
             return 0;
         }
-        console.log({ data });
-        console.log(data.data.item.stock);
-        return setCartProducts([data.data.item.stock]);
+        const stock = quantity.data.item.stock;
+        console.log(quantity.data.item.stock);
+
+        return stock
         } catch (err) {
             console.error(err);
         }
@@ -37,12 +38,12 @@ export default function CartProvider({ children }) {
 
     function AddOnetoCart(name) {
         const quantity = GetQuantity(name);
-
+        console.log(quantity)
         if (quantity === 0) {
             setCartProducts(
                 [...cartProducts,
                 {
-                    name: name,
+                    foodItem: name,
                     stock: 1
                 }]
             )

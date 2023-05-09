@@ -26,7 +26,7 @@ export const Ingredients = ({ ingredients }) => {
 export const MealType = ({ mealType }) => {
   return mealType.map((val, i) => {
     const types = val.split("/");
-    console.log(types);
+    // console.log(types);
     if (types[1]) {
       return (
         <>

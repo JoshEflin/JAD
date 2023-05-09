@@ -1,19 +1,19 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { RecipeCard } from "./RecipeCard";
+import { RecipeCard } from "./recipeCard";
 import { GET_RECIPE } from "../../utils/mutations";
-import Auth from "../../utils/auth";
 
-const Recipe = () => {
+
+const Recipe = () => { 
   const [searchString, setSearchString] = useState("");
   const [getRecipe, { error, data }] = useMutation(GET_RECIPE);
+  const [cardData, setCardData] = useState(null);
   const handleSearch = (event) => {
     const { name, value } = event.target;
 
     setSearchString(value);
   };
-  const [cardData, setCardData] = useState(null);
+  
   const handleSearchSubmit = async (event) => {
     event.preventDefault();
 
@@ -26,6 +26,7 @@ const Recipe = () => {
         variables: { ...mutationObj },
       });
       setCardData(data);
+      console.log(cardData)
     } catch (e) {
       console.log(e);
     }
@@ -41,7 +42,7 @@ const Recipe = () => {
           Search
         </label>
         <div className="relative">
-          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+          <div className="absolute inset-y-2 -left-1 flex items-center pl-3 pointer-events-none">
             <svg
               aria-hidden="true"
               className="w-5 h-5 text-gray-500 dark:text-gray-400"
@@ -76,15 +77,12 @@ const Recipe = () => {
           </button>
         </div>
       </form>
-
-      {/* <h1 className="bg-green">ingredient card template</h1> */}
-      {/* < IngredientCard /> */}
-
       <div className="bg-white">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
           <h2 className="sr-only">Recipe</h2>
           <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
             <RecipeCard cardData={cardData} />
+            
           </div>
         </div>
       </div>

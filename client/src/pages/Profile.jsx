@@ -3,11 +3,27 @@ import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import Avatar from 'react-avatar-edit'
 
-// import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
 
 const Profile = () => {
+    const { username: userParam } = useParams();
+
+    const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+      variables: { username: userParam },
+    });
+
+    const user = data?.me || data?.user || {};
+
+    if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+      return <Navigate to="/me" />;
+    }
+
+    if (loading) {
+      return <div>Loading...</div>;
+    }
+
     const [preview, setPreview] = useState(null);
     function onClose() {
         setPreview(null);
@@ -21,6 +37,7 @@ const Profile = () => {
           elem.target.value = "";
         }
       }
+
     return (
         <div className='text-center justify-center h-full my-10'>
             <h1>Profile</h1>
@@ -37,10 +54,9 @@ const Profile = () => {
                 />
             </div>
                 {/* {preview && <img src={preview} alt="Preview" />} */}
-            <p>Username:</p>
-            <p className='bg-gray-300 p-2 rounded-md text-lg inline-block'>Alexander1262</p>
+            <p className='bg-gray-300 p-2 rounded-md text-lg inline-block'>{user.username}</p>
             <p>Email:</p>
-            <p className='bg-gray-300 p-2 rounded-md text-lg inline-block'>weisssander@gmail.com</p>
+            <p className='bg-gray-300 p-2 rounded-md text-lg inline-block'>{user.email}</p>
         </div>
     )
 }

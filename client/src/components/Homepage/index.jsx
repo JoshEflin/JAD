@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import recipeIcon from '../../assets/recipeicon.png'
 import groceryIcon from '../../assets/groceryicon.png'

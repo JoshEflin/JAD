@@ -55,6 +55,9 @@ const Homepage = () => {
             <div className='flex flex-row my-5 flex-wrap'>
                 <Coupon item={couponData[0]}/>
                 <Coupon item={couponData[1]}/>
+                <Coupon item={couponData[2]}/>
+                <Coupon item={couponData[3]}/>
+                <Coupon item={couponData[4]}/>
             </div>
         </div>
     )

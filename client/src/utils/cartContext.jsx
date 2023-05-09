@@ -14,13 +14,14 @@ export const CartContext = createContext({
 });
 
 export default function CartProvider({ children }) {
+    const [getQuantity, { error }] = useMutation(GET_ITEM);
  const [cartProducts, setCartProducts] = useState([]);
 
     async function GetQuantity(name) {
-        const [getQuantity, { error }] = useMutation(GET_ITEM);
+        
         // try {
         const data = await getQuantity({
-            variables: { name: { name } },
+            variables: { name:  'salt'  },
         });
 
         if (data === undefined) {
@@ -83,7 +84,7 @@ export default function CartProvider({ children }) {
     }
 
     function GetTotalCost() {
-        const [getQuantity, { error }] = useMutation(GET_ITEM);
+        
         let totalCost = 0;
         cartProducts.map((cartItem) => {
             const productData = getQuantity(cartItem.name);

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import FullRecipe from "./FullRecipe";
+
 import { HealthLabels, Ingredients, MealType } from "./utils";
 
 export function RecipeCard({ cardData}) {

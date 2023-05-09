@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { RecipeCard } from "./RecipeCard";
+import { RecipeCard } from "./recipeCard";
 import { GET_RECIPE } from "../../utils/mutations";
-import FullRecipe from "./FullRecipe";
 
-const Recipe = () => {
-  const [viewFullRecipe, setViewFullRecipe] = useState(false);
+
+const Recipe = () => { 
   const [searchString, setSearchString] = useState("");
   const [getRecipe, { error, data }] = useMutation(GET_RECIPE);
   const [cardData, setCardData] = useState(null);
@@ -14,9 +13,7 @@ const Recipe = () => {
 
     setSearchString(value);
   };
-  // const closeModal = () => {
-  //   setShowModal(!showModal);
-  // };
+  
   const handleSearchSubmit = async (event) => {
     event.preventDefault();
 
@@ -85,7 +82,7 @@ const Recipe = () => {
           <h2 className="sr-only">Recipe</h2>
           <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
             <RecipeCard cardData={cardData} />
-            {/* <FullRecipe recipe={cardData.getRecipe[0]} /> */}
+            
           </div>
         </div>
       </div>

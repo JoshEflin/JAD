@@ -24,5 +24,5 @@ connection.once('open', async () => {
         .catch(err => console.error(err))
 })
 
-console.log('end')
+process.exit(0)
 

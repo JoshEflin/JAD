@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Coupon({ item }) {
     return (
-        <div className='border border-solid border-gray-300 w-80 mx-2 shadow-md shadow-black p-1 rounded-xl'>
+        <div className='border border-solid border-gray-300 w-80 mx-2 shadow-md shadow-black p-1 rounded-xl my-3'>
             <div className='p-4'>
                 <h1 className='font-semibold text-amber-800 text-xl mb-2'>{item.amount}</h1>
                 <p className='font-semibold text-gray-700 mb-2'>{item.name}</p>

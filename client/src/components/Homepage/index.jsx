@@ -16,14 +16,48 @@ import 'slick-carousel/slick/slick-theme.css';
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
-const Homepage = () => {
+function CouponSlider() {
     const settings = {
         dots: true,
         infinite: true,
         speed: 500,
         slidesToShow: 3,
-        slidesToScroll: 1,
+        slidesToScroll: 3,
+        centerMode: true,
+        centerPadding: "60px",
+        responsive: [
+        {
+            breakpoint: 1024,
+            settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            centerPadding: "40px",
+            },
+        },
+        {
+            breakpoint: 768,
+            settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            centerPadding: "20px",
+            },
+        },
+        ],
       };
+    return (
+        <div className='w-full h-80'>
+            <Slider {...settings}>
+                {couponData.map((item, index) => (
+                    <div key={index} className='w-80 h-60 mr-4'>
+                        <Coupon item={item} />
+                    </div>
+                ))}
+            </Slider>
+        </div>
+    )
+}
+
+const Homepage = () => {
     return (
         <div className='mt-10 mb-10'>
                 <h1 className='text-5xl font-semibold'>Check out our categories!</h1>
@@ -68,14 +102,8 @@ const Homepage = () => {
                 </SwiperSlide>
             </Swiper>
             </div>
-            <h1 className='text-5xl font-semibold my-5'>Coupons & Deals</h1>
-            <Slider {...settings}>
-                <div className='flex flex-row my-5 flex-wrap'>
-                    {couponData.map((item, index) => (
-                        <Coupon key={index} item={item} />
-                    ))}
-                </div>
-            </Slider>
+            <h1 className='text-5xl font-semibold my-8'>Coupons & Deals</h1>
+            <CouponSlider />
         </div>
     )
 }

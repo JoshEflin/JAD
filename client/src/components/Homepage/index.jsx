@@ -91,7 +91,7 @@ const Homepage = () => {
                         <h2 className='text-xl font-semibold text-center'>Products</h2>
                     </div>
                 </div>
-                <div className='flex flex-row justify-center'>
+                {/* <div className='flex flex-row justify-center'>
                     <div className='w-full md:w-4/5 mx-auto'>
                         <Swiper className='mx-10 my-5 h-'>
                             <SwiperSlide>
@@ -117,7 +117,7 @@ const Homepage = () => {
                             </SwiperSlide>
                         </Swiper>
                     </div>
-                </div>
+                </div> */}
             <h1 className='text-5xl font-semibold my-8'>Coupons & Deals</h1>
             <CouponSlider />
             </div>

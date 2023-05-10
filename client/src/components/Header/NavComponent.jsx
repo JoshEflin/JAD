@@ -13,9 +13,9 @@ const NavComponent = ({
       onClick={() => handleNavClick(`${item.name}`)}
       className={classNames(
         isCurrent === item.name
-          ? "underline text-white"
+          ? "text-white"
           : "text-gray-300 hover:underline hover:text-white",
-        "rounded-md px-3 py-2 text-sm font-medium"
+        "rounded-md px-3 py-2 text-lg font-medium"
       )}
       aria-current={item.current ? "page" : undefined}
     >

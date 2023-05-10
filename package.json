@@ -13,15 +13,5 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^8.0.1"
-  },
-  "dependencies": {
-    "bootstrap": "^5.2.3",
-    "dotenv": "^16.0.3",
-    "git-filter-repo": "^0.0.30",
-    "react-avatar-edit": "^1.2.0",
-    "react-dropzone": "^14.2.3",
-    "react-slick": "^0.29.0",
-    "slick-carousel": "^1.8.1",
-    "swiper": "^9.3.0"
   }
 }

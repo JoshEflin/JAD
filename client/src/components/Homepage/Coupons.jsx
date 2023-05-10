@@ -12,7 +12,7 @@ export default function Coupon({ item }) {
                     <button className='bg-green-500 py-2 px-4 rounded-xl text-white font-semibold shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50'>Clip Coupon</button>
                 </div>
                 <p className='text-sm pt-3'>One time use</p>
-                <p className='text-sm'>Expires 5/27/2023</p>
+                <p className='text-sm'>Expires 5/28/2023</p>
             </div>
         </div>
     )

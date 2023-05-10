@@ -1,4 +1,4 @@
-import { Fragment, useRef, useState, useContext } from 'react';
+import { Fragment, useRef, useState, useContext, useEffect } from 'react';
 import { Disclosure, Menu, Transition, Dialog } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom';
@@ -6,6 +6,7 @@ import NavComponent from './NavComponent';
 import Profile from '../../pages/Profile'
 import { CartContext } from '../../utils/cartContext';
 import { Button } from 'react-bootstrap';
+import newIcon from '../../assets/NewLogo.png'
 
 import Auth from "../../utils/auth";
 
@@ -25,6 +26,29 @@ function classNames(...classes) {
 
 
 const Header = () => {
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.pageYOffset === 0) {
+        setShow(false);
+      } else {
+        setShow(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const headerStyle = {
+    display: show ? 'block' : 'none'
+  };
+
+  
+
   const [openM, setOpen] = useState(false)
   const handleShow = () => setOpen(true);
   const cancelButtonRef = useRef(null)
@@ -41,7 +65,7 @@ const Header = () => {
   };
 const productsCount = cart.items.reduce((sum, product)=> sum + product.stock,0);
   return (
-    <Disclosure as="nav" className="bg-green-800">
+    <Disclosure as="nav" className={`bg-green-800 ${headerStyle}`}>
       {({ open }) => (
         <>
          <Transition.Root show={openM} as={Fragment}>
@@ -139,12 +163,12 @@ const productsCount = cart.items.reduce((sum, product)=> sum + product.stock,0);
                 <div className="flex flex-shrink-0 items-center">
                   <img
                     className="block h-8 w-auto lg:hidden"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                    src={newIcon}
                     alt="Your Company"
                   />
                   <img
                     className="hidden h-8 w-auto lg:block"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                    src={newIcon}
                     alt="Your Company"
                   />
                 </div>
@@ -178,13 +202,13 @@ const productsCount = cart.items.reduce((sum, product)=> sum + product.stock,0);
                  />
                 )}
                 <button className="text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium" onClick={handleShow}>Cart {productsCount} Items</button>
-                <button
+                {/* <button
                   type="button"
                   className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                 >
                   <span className="sr-only">View notifications</span>
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
+                </button> */}
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   <div>
@@ -247,8 +271,8 @@ const productsCount = cart.items.reduce((sum, product)=> sum + product.stock,0);
                   href={item.href}
                   className={classNames(
                     item.current
-                      ? "bg-gray-900 text-white"
-                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                      ? "underline text-white"
+                      : "text-gray-300 hover:underline hover:text-white",
                     "block rounded-md px-3 py-2 text-base font-medium"
                   )}
                   aria-current={item.current ? "page" : undefined}

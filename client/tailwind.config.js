@@ -9,6 +9,9 @@ module.exports = {
 
 theme: {
   extend: {
+    fontFamily: {
+      'recipe':['Comic Neue' ]
+    },
     animation: {
       puffOut: 'puffOut 1s forwards',
     },

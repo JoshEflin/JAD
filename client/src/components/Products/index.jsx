@@ -6,8 +6,6 @@ import { CartContext } from "../../utils/cartContext";
 
 const Products = () => {
   const cart = useContext(CartContext);
-  // const [getGroceries, setGroceries] = useState([]);
-  // const [search, setSearch] = useState("");
   const { loading, data } = useQuery(QUERY_ITEMS);
   const products = data?.getItems || [];
 

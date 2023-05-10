@@ -15,9 +15,9 @@ import Footer from './components/Footer'
 import Products from './components/Products';
 import Homepage from './components/Homepage'
 import './App.css'
-import Cancel from './pages/Cancel'
 import Success from './pages/Success'
 import CartProvider from './utils/cartContext';
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -68,10 +68,6 @@ function App() {
                <Route
                 path='/products'
                 element={<Products />}
-              />
-               <Route
-                path='/cancel'
-                element={<Cancel />}
               />
               <Route
               path='/recipes'

@@ -7,7 +7,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/graphql": "http://localhost:3001"
+      "/graphql": "http://localhost:3001",
+      "/create-checkout-session": "http://localhost:3001"
     }
   }
 })

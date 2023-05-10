@@ -3,8 +3,7 @@ import { useMutation } from "@apollo/client";
 import { RecipeCard } from "./recipeCard";
 import { GET_RECIPE } from "../../utils/mutations";
 
-
-const Recipe = () => { 
+const Recipe = () => {
   const [searchString, setSearchString] = useState("");
   const [getRecipe, { error, data }] = useMutation(GET_RECIPE);
   const [cardData, setCardData] = useState(null);
@@ -13,7 +12,7 @@ const Recipe = () => {
 
     setSearchString(value);
   };
-  
+
   const handleSearchSubmit = async (event) => {
     event.preventDefault();
 
@@ -26,7 +25,7 @@ const Recipe = () => {
         variables: { ...mutationObj },
       });
       setCardData(data);
-      console.log(cardData)
+      console.log(cardData);
     } catch (e) {
       console.log(e);
     }
@@ -34,56 +33,52 @@ const Recipe = () => {
 
   return (
     <div>
-      <form>
-        <label
-          htmlFor="default-search"
-          className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
-        >
-          Search
-        </label>
-        <div className="relative">
-          <div className="absolute inset-y-2 -left-1 flex items-center pl-3 pointer-events-none">
-            <svg
-              aria-hidden="true"
-              className="w-5 h-5 text-gray-500 dark:text-gray-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              ></path>
-            </svg>
-          </div>
-          <input
-            type="search"
-            id="default-search"
-            onChange={handleSearch}
-            value={searchString.foodStr}
-            className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-green-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-blue-500"
-            placeholder="Search Recipes, foods, and other goodies!"
-            required
-          />
-          <button
-            type="submit"
-            onClick={handleSearchSubmit}
-            className="text-white absolute right-2.5 bottom-2.5 bg-green-700 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-green-600 dark:hover:bg-green-500-700 dark:focus:ring-green-800"
-          >
-            Search
-          </button>
-        </div>
-      </form>
+      <form className="justify-center flex">
+  <label
+    htmlFor="default-search"
+    className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+  >
+    Search
+  </label>
+
+  <div className="relative flex justify-center w-2/3 mt-6">
+    <input
+      type="search"
+      id="default-search"
+      onChange={handleSearch}
+      value={searchString.foodStr}
+      className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:bg-green-50 focus:outline-none focus:border-green-100"
+      placeholder="Search Recipes, foods, and other goodies!"
+      required
+    />
+    <button
+      type="submit"
+      onClick={handleSearchSubmit}
+      className="absolute right-0 flex items-center justify-center w-12 h-full text-white bg-green-700 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-r-lg text-sm"
+    >
+      <svg
+        aria-hidden="true"
+        className="w-5 h-5 mx-2 text-gray-500 dark:text-gray-400"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+        ></path>
+      </svg>
+    </button>
+  </div>
+</form>
+
       <div className="bg-white">
-        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+        <div className=" mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-10 lg:max-w-7xl lg:px-8">
           <h2 className="sr-only">Recipe</h2>
-          <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-            <RecipeCard cardData={cardData} />
-            
-          </div>
+          <RecipeCard cardData={cardData} />
         </div>
       </div>
     </div>

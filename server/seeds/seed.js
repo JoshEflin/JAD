@@ -7,7 +7,7 @@ connection.on('error', (err) => err);
 
 const seedData = groceryData.map(({ name, photo }) => {
     const ingredientObj = {
-        name: name,
+        name: name.toUpperCase(),
         price: Math.floor(Math.random() * 25),
         stock: Math.floor(Math.random() * 15),
         photo: photo

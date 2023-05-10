@@ -21,7 +21,8 @@
     "graphql": "^16.3.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^7.0.5",
-    "stripe": "^12.4.0"
+    "stripe": "^12.4.0",
+    "git-filter-repo": "^0.0.30"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"

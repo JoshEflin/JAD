@@ -29,7 +29,12 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.1",
     "vite": "^4.3.4",
-    "web-vitals": "^0.2.4"
+    "web-vitals": "^0.2.4",
+    "bootstrap": "^5.2.3",
+    "react-dropzone": "^14.2.3",
+    "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1",
+    "swiper": "^9.3.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

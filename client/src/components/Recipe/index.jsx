@@ -41,7 +41,7 @@ const Recipe = () => {
     Search
   </label>
 
-  <div className="relative flex justify-center w-2/3 mt-6">
+  <div className="relative flex justify-center w-4/5 sm:w-1/3 mt-6">
     <input
       type="search"
       id="default-search"
@@ -58,7 +58,7 @@ const Recipe = () => {
     >
       <svg
         aria-hidden="true"
-        className="w-5 h-5 mx-2 text-gray-500 dark:text-gray-400"
+        className="w-5 h-5 mx-2 text-gray-100"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"

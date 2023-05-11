@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import recipeIcon from '../../assets/recipeicon.png'
@@ -30,11 +31,20 @@ function CouponSlider() {
         centerMode: true,
         centerPadding: "70px 40px",
         responsive: [
+        
         {
-            breakpoint: 1024,
+            breakpoint: 1300,
             settings: {
             slidesToShow: 3,
             slidesToScroll: 3,
+            centerPadding: "40px",
+            },
+        },
+        {
+            breakpoint: 1024,
+            settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
             centerPadding: "40px",
             },
         },
@@ -43,7 +53,7 @@ function CouponSlider() {
             settings: {
             slidesToShow: 1,
             slidesToScroll: 1,
-            centerPadding: "20px",
+            centerPadding: "10px",
             },
         },
         ],
@@ -62,6 +72,8 @@ function CouponSlider() {
 }
 
 const Homepage = () => {
+    const [recipeHovered, setRecipeHovered] = useState(false);
+    const [groceryHovered, setGroceryHovered] = useState(false);
     const { username: userParam } = useParams();
     const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
         variables: { username: userParam },
@@ -71,24 +83,34 @@ const Homepage = () => {
         <div className='mt-10 mb-10'>
             {Auth.loggedIn() ? (
                 <>
-                <h1 className='text-7xl font-semibold my-8'>Hello {user.username}!</h1>
+                <h1 className='text-7xl font-semibold my-8 hover:cursor-default'>Hello {user.username}!</h1>
                 </>
             ) : (
-                <h1 className='text-xl font-semibold my-8'>Please sign in or register!</h1>
+                <h1 className='text-xl font-semibold my-8 hover:cursor-default'>Please sign in or register!</h1>
             )}
-                <h1 className='text-5xl font-semibold'>Check out our categories!</h1>
+                <h1 className='text-5xl font-semibold hover:cursor-default'>Check out our categories!</h1>
                 <div className='flex flex-row justify-center'>
                     <div className='flex-col'>
-                        <Link className='m-5' to='/recipes'>
-                            <img src={recipeIcon} className='w-40 h-40' alt='Recipe Icon'/>
+                        <Link
+                        className='m-5'
+                        to='/recipes'
+                        onMouseEnter={() => setRecipeHovered(true)}
+                        onMouseLeave={() => setRecipeHovered(false)}
+                        >
+                            <img src={recipeIcon} className={`w-40 h-40 ${recipeHovered ? 'filter brightness-200'  : ''}`} alt='Recipe Icon'/>
                         </Link>
-                        <h2 className='text-xl font-semibold text-center'>Recipes</h2>
+                        <h2 className='text-xl font-semibold text-center hover:cursor-default'>Recipes</h2>
                     </div>
                     <div className='flex-col'>
-                        <Link className='m-5' to='/products'>
-                            <img src={groceryIcon} className='w-40 h-40' alt='Grocery Icon'/>
+                        <Link
+                        className='m-5'
+                        to='/products'
+                        onMouseEnter={() => setGroceryHovered(true)}
+                        onMouseLeave={() => setGroceryHovered(false)}
+                        >
+                            <img src={groceryIcon} className={`w-40 h-40 ${groceryHovered ? 'filter brightness-200'  : ''}`} alt='Grocery Icon'/>
                         </Link>
-                        <h2 className='text-xl font-semibold text-center'>Products</h2>
+                        <h2 className='text-xl font-semibold text-center hover:cursor-default'>Products</h2>
                     </div>
                 </div>
                 {/* <div className='flex flex-row justify-center'>
@@ -118,8 +140,8 @@ const Homepage = () => {
                         </Swiper>
                     </div>
                 </div> */}
-            <h1 className='text-5xl font-semibold my-8'>Coupons & Deals</h1>
-            <CouponSlider />
+            <h1 className='text-5xl font-semibold my-8 hover:cursor-default'>Coupons & Deals</h1>
+                <CouponSlider />
             </div>
     )
 }

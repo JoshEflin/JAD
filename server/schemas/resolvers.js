@@ -21,31 +21,30 @@ const resolvers = {
     },
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
-      const order = new Ingredient(args.products);
-      console.log(order);
       const line_items = [];
 
-      // const { products } = await order.populate('products');
       console.log(args.products);
-      for (let i = 0; i < products.length; i++) {
+
+      for (let i = 0; i < args.products.length; i++) {
         const product = await stripe.products.create({
-          name: products[i].name,
-          description: products[i].description,
-          images: [`${url}/images/${products[i].image}`]
+          name: args.products[i].foodItem,
+          description: args.products[i].description,
+          images: [args.products[i].photo]
+
         });
 
         const price = await stripe.prices.create({
           product: product.id,
-          unit_amount: products[i].price * 100,
+          unit_amount: args.products[i].price * 100,
           currency: 'usd',
         });
 
         line_items.push({
           price: price.id,
-          quantity: 1
+          quantity: args.products[i].stock
         });
       }
-
+      console.log(line_items);
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
         line_items,
@@ -53,7 +52,6 @@ const resolvers = {
         success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${url}/`
       });
-
       return { session: session.id };
     }
   },
@@ -63,10 +61,10 @@ const resolvers = {
   Mutation: {
 
     getRecipe: async (parent, { foodStr }) => {
-      // console.log(foodStr)
+
       const recipes = await getRecipe(foodStr);
-      // console.log(recipes)
-            
+
+
       return recipes;
     },
     addUser: async (parent, { username, email, password }) => {

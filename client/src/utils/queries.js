@@ -31,7 +31,7 @@ query me {
 }`;
 
 export const QUERY_CHECKOUT = gql`
-  query getCheckout($products: [String]!) {
+  query getCheckout($products: [IngredientInput]!) {
     checkout(products: $products) {
       session
     }

@@ -19,6 +19,15 @@ const typeDefs = gql`
     photo: String
     description: String
   }
+
+  input IngredientInput {
+    foodItem: String
+    price: Float
+    stock: Float
+    photo: String
+    description: String
+  }
+
   type Ingredients {
     text: String
     quantity: Float
@@ -51,7 +60,7 @@ const typeDefs = gql`
     user(username: String!): User
     me: User
     getItems: [Ingredient]
-    checkout(products: [String]!): Checkout
+    checkout(products: [IngredientInput]!): Checkout
   }
 
   type Mutation {

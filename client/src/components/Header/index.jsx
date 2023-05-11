@@ -31,7 +31,18 @@ function classNames(...classes) {
 }
 
 const Header = () => {
-  const [openM, setOpen] = useState(false)
+
+const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
+
+useEffect(() => {
+  if (data) {
+    stripePromise.then((res) => {
+      res.redirectToCheckout({ sessionId: data.checkout.session });
+    });
+  }
+}, [data]);
+
+const [openM, setOpen] = useState(false)
   const handleShow = () => setOpen(true);
   const cancelButtonRef = useRef(null)
   const cart = useContext(CartContext);
@@ -41,9 +52,9 @@ const Header = () => {
     
     cart.items.forEach((item) => {
       console.log(item);
-        productIds.push(item.foodItem); 
+        productIds.push(item); 
     });
-    console.log(productIds);
+    
     getCheckout({
       
       variables: { products: productIds },

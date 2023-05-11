@@ -23,11 +23,11 @@ export default function CartProvider({ children }) {
         const quantity = await getQuantity({
             variables: { foodItem:  name  },
         });
-
+        console.log(quantity);
         if (quantity === undefined) {
             return 0;
         }
-        const stock = {stock: quantity.data.item.stock, price: quantity.data.item.price};
+        const stock = {stock: quantity.data.item.stock, price: quantity.data.item.price, description: quantity.data.item.description, photo: quantity.data.item.photo};
         return stock
         } catch (err) {
             console.error(err);
@@ -35,7 +35,7 @@ export default function CartProvider({ children }) {
     }
      function CartQuantity(name) {
         const quantity = cartProducts.find(product => product.foodItem === name)?.stock;
-
+        
         if (quantity === undefined) {
             return 0;
         }
@@ -45,6 +45,9 @@ export default function CartProvider({ children }) {
      function AddOnetoCart (name) {
         const quantity = GetQuantity(name)
         {quantity.then((data)=>{ 
+            console.log({insidecart: data})
+            const photo = data.photo;
+            const desc = data.description;
             const price = data.price;
             const cart = CartQuantity(name);
              if (cart === 0) {
@@ -53,7 +56,9 @@ export default function CartProvider({ children }) {
                 {
                     foodItem: name,
                     price: price,
-                    stock: 1
+                    photo: photo,
+                    stock: 1,
+                    description: desc
                 }]
             )   
         } else {

@@ -43,6 +43,8 @@ mutation getRecipe($foodStr: String!) {
     }
   }
 }`;
+
+// FOR CART
 export const GET_ITEM = gql`
 mutation Item($foodItem: String!) {
   item(foodItem: $foodItem) {

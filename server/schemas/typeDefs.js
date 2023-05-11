@@ -33,7 +33,6 @@ const typeDefs = gql`
     label: String
     image: String
     calories: Float
-    
     dishType: [String]
     mealType: [String]
     ingredients: [Ingredients]

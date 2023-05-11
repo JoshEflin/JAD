@@ -83,12 +83,12 @@ const Homepage = () => {
         <div className='mt-10 mb-10'>
             {Auth.loggedIn() ? (
                 <>
-                <h1 className='text-7xl font-semibold my-8'>Hello {user.username}!</h1>
+                <h1 className='text-7xl font-semibold my-8 hover:cursor-default'>Hello {user.username}!</h1>
                 </>
             ) : (
-                <h1 className='text-xl font-semibold my-8'>Please sign in or register!</h1>
+                <h1 className='text-xl font-semibold my-8 hover:cursor-default'>Please sign in or register!</h1>
             )}
-                <h1 className='text-5xl font-semibold'>Check out our categories!</h1>
+                <h1 className='text-5xl font-semibold hover:cursor-default'>Check out our categories!</h1>
                 <div className='flex flex-row justify-center'>
                     <div className='flex-col'>
                         <Link
@@ -99,7 +99,7 @@ const Homepage = () => {
                         >
                             <img src={recipeIcon} className={`w-40 h-40 ${recipeHovered ? 'filter brightness-200'  : ''}`} alt='Recipe Icon'/>
                         </Link>
-                        <h2 className='text-xl font-semibold text-center'>Recipes</h2>
+                        <h2 className='text-xl font-semibold text-center hover:cursor-default'>Recipes</h2>
                     </div>
                     <div className='flex-col'>
                         <Link
@@ -110,7 +110,7 @@ const Homepage = () => {
                         >
                             <img src={groceryIcon} className={`w-40 h-40 ${groceryHovered ? 'filter brightness-200'  : ''}`} alt='Grocery Icon'/>
                         </Link>
-                        <h2 className='text-xl font-semibold text-center'>Products</h2>
+                        <h2 className='text-xl font-semibold text-center hover:cursor-default'>Products</h2>
                     </div>
                 </div>
                 {/* <div className='flex flex-row justify-center'>
@@ -140,7 +140,7 @@ const Homepage = () => {
                         </Swiper>
                     </div>
                 </div> */}
-            <h1 className='text-5xl font-semibold my-8'>Coupons & Deals</h1>
+            <h1 className='text-5xl font-semibold my-8 hover:cursor-default'>Coupons & Deals</h1>
                 <CouponSlider />
             </div>
     )

@@ -24,31 +24,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-
 const Header = () => {
-  const [show, setShow] = useState(false);
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.pageYOffset === 0) {
-        setShow(false);
-      } else {
-        setShow(true);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  const headerStyle = {
-    display: show ? 'block' : 'none'
-  };
-
-  
-
   const [openM, setOpen] = useState(false)
   const handleShow = () => setOpen(true);
   const cancelButtonRef = useRef(null)
@@ -65,7 +41,7 @@ const Header = () => {
   };
 const productsCount = cart.items.reduce((sum, product)=> sum + product.stock,0);
   return (
-    <Disclosure as="nav" className={`bg-green-800 ${headerStyle}`}>
+    <Disclosure as="nav" className={`bg-green-800 sticky w-full top-0`}>
       {({ open }) => (
         <>
          <Transition.Root show={openM} as={Fragment}>

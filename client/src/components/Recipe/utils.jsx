@@ -1,13 +1,11 @@
 // This file formats the properties of the getRecipe function so that they display
 // correctly on cards
 import { useContext } from "react";
+import { useQuery, useMutation } from "@apollo/client";
 import { CartContext } from "../../utils/cartContext";
 import {GET_ITEM} from "../../utils/mutations" 
 
-function addToCard(string) {
-  
-   
-}
+
 export const HealthLabels = ({ healthLabels }) => {
   let newHealthLabels;
   if(healthLabels.length>12){
@@ -26,7 +24,29 @@ export const HealthLabels = ({ healthLabels }) => {
   return labelSpan;
 };
 export const Ingredients = ({ ingredients }) => {
-  const cart = useContext(CartContext);
+  const [getItem, {error, data}]=useMutation(GET_ITEM)
+  
+  const isInStock = async (string)=> {
+  const queryObj = {foodItem: string}
+  try{
+  const {data}= await getItem({
+    
+    variables: {...queryObj}
+
+  })}catch(e){
+    console.error(e)
+  }
+  }
+  const addIngredientToCart = (str) => {
+
+    const cart = useContext(CartContext);
+    if(isInStock(str).item === null){
+      return false
+    }else {
+      cart.AddOnetoCart(str)
+    }
+
+  }
   const ingredientSpan = ingredients.map((val, i) => {
 
     return (
@@ -40,7 +60,7 @@ export const Ingredients = ({ ingredients }) => {
         </div>
         <div className='flex-shrink-0'>
           <button className=" mx-auto mb-3 font-recipe text-2xl text-white relative bottom-2.5 bg-green-700 hover:bg-green-600 focus:ring-4 focus:outline-none rounded-md px-2 pt-1"
-                  onClick={()=>cart.AddOnetoCart(val.food.toUpperCase())}
+                  onClick={()=>addIngredientToCart(val.food.toUpperCase())}
                   >
                     Add to Cart
           </button>

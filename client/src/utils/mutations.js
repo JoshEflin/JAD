@@ -56,7 +56,7 @@ mutation Item($foodItem: String!) {
   }
 }
   `;
-
+// stock needs to be set before sending back, this query will set thee stock to the stock value passed in
 export const UPDATE_INVENTORY = gql`
 mutation Stock($name: String, $stock: Int) {
   stock(name: $name, stock: $stock) {

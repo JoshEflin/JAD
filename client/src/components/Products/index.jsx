@@ -37,25 +37,28 @@ const Products = () => {
                       <div className='font-bold text-xl mb-2'>{product.name}</div>
                       <p className="text-gray-700 font-medium mb-2">Price: ${product.price}</p>
                       <p className="text-gray-600 font-medium mb-4">Current Stock: {product.stock}</p>
-                      <div className='flex items-center mt-4'>
-                        <div className='flex items-center'>
-                          <button id={`cart-${product._id}`} onClick={() => cart.AddOnetoCart(product.name)} className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">
+                        <div className='flex items-center justify-center space-x-2'>
+                          <button id={`cart-${product._id}`} onClick={() => cart.AddOnetoCart(product.name)} className="inline-flex justify-center items-center w-24 h-10 rounded-md bg-white text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                          </svg>
                             Add
                           </button>
-                          <button onClick={() => cart.RemoveOnefromCart(product.name)} className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">
+                          <button onClick={() => cart.RemoveOnefromCart(product.name)} className="inline-flex justify-center items-center w-24 h-10 rounded-md bg-white text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 12H4" />
+                          </svg>
                             Remove
                           </button>
                         </div>
-                        <div className='flex items-center'>
-                        <button  onClick={() => cart.DeletefromCart(product.name)} className="mt-3 inline-flex w-full justify-center rounded-md bg-red px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Delete Item</button>
-                        </div>
+                      <div className="flex justify-center">
+                        <button
+                          className="p-1 text-white bg-lime-600 border border-slate-300 hover:border-indigo-600 rounded-md shadow-lg shadow-indigo-500/40 mt-4"
+                          onClick={() => cart.AddOnetoCart(product.name)}
+                        >
+                          Add to Cart
+                        </button>
                       </div>
-                      <button
-                        className="p-1 text-white bg-lime-600 border border-slate-300 hover:border-indigo-600 rounded-md shadow-lg shadow-indigo-500/40"
-                        onClick={() => cart.AddOnetoCart(product.name)}
-                      >
-                        Add to Cart
-                      </button>
                     </div>
                   </div>
                 </div>

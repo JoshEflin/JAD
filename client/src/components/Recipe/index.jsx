@@ -24,10 +24,10 @@ const Recipe = () => {
       const { data } = await getRecipe({
         variables: { ...mutationObj },
       });
-      setCardData(data);
+      await setCardData(data);
       console.log(cardData);
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 

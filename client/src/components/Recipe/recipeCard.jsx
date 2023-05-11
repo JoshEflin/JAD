@@ -71,19 +71,22 @@ export function RecipeCard({ cardData }) {
             return (
               <div
                 key={index}
-                className={`group bg-green-700 rounded p-3 ${
+                className={`group  rounded-lg p-4 bg-green-300 hover:bg-green-400 cursor-pointer ${
                   isAnimated ? "animate-puffOut" : ""
-                }`}
+                } shadow-md hover:shadow-xl transitional-all duration-300`}
                 onClick={() => handleClick(index)}
               >
-                <h3 className="mt-4 text-lg text-white">{label}</h3>
-                <MealType mealType={mealType} />
-                <p>{Math.floor(calories)} Calories</p>
-                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                <div className="relative aspect-h-1 aspect-w-1">
                   <img
                     src={image}
-                    className="h-full w-full object-cover object-center group-hover:opacity-75"
+                    alt={label}
+                    className="absolute inset-0 object-cover w-full h-full rounded-lg group-hover:opacity-75 transition-opacity duration-300"
                   />
+                </div>
+                <div className='mt-4'>
+                  <h3 className="text-lg font-medium text-gray-800">{label}</h3>
+                  <MealType mealType={mealType} />
+                  <p className='mt-1 text-sm text-gray-600'>{Math.floor(calories)} Calories</p>
                 </div>
               </div>
             );

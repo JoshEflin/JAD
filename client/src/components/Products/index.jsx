@@ -12,8 +12,8 @@ const Products = () => {
   return (
     <main>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-5xl font-semibold">Welcome to JAD Grocery!</h1>
-        <h2 className="inline-block p-1 font-extralight font-semibold bg-lime-600 m-3 rounded-md bg-opacity-25">
+        <h1 className="text-5xl font-bold tracking-tight text-gray-900 my-8 cursor-default">Welcome to JAD Grocery!</h1>
+        <h2 className="inline-block py-2 px-4 font-semibold text-white bg-green-600 mb-8 rounded-md cursor-default">
           {products.length
             ? `Viewing ${products.length} ${
                 products.length === 1 ? "item" : "items"
@@ -28,29 +28,37 @@ const Products = () => {
                 <div>
                     {product.photo ? (
                       <img
-                        className='w-full'
+                        className='w-full h-48 object-cover object-center'
                         src={product.photo}
                         alt={`The picture for ${product.name}`}
                       />
                     ) : null}
                     <div className='px-6 py-4'>
-                      <div className='font-bold text-md mb-2'>{product.name}</div>
-                      <p className="small">Price: ${product.price}</p>
-                      <div>Current Stock: {product.stock}</div>
-                      <div className='flex items-center justify-around'>
-                        <div className='flex items-center'>
-                          <label htmlFor={`cart-${product._id}`} className='mr-2 font-serif'> Cart: </label>
-                          <button id={`cart-${product._id}`} onClick={() => cart.AddOnetoCart(product.name)} className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Add</button>
-                        <button onClick={() => cart.RemoveOnefromCart(product.name)} className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Remove</button>
+                      <div className='font-bold text-xl mb-2'>{product.name}</div>
+                      <p className="text-gray-700 font-medium mb-2">Price: ${product.price}</p>
+                      <p className="text-gray-600 font-medium mb-4">Current Stock: {product.stock}</p>
+                        <div className='flex items-center justify-center space-x-2'>
+                          <button id={`cart-${product._id}`} onClick={() => cart.AddOnetoCart(product.name)} className="inline-flex justify-center items-center w-24 h-10 rounded-md bg-white text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                          </svg>
+                            Add
+                          </button>
+                          <button onClick={() => cart.RemoveOnefromCart(product.name)} className="inline-flex justify-center items-center w-24 h-10 rounded-md bg-white text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 12H4" />
+                          </svg>
+                            Remove
+                          </button>
                         </div>
-                        <button  onClick={() => cart.DeletefromCart(product.name)} className="mt-3 inline-flex w-full justify-center rounded-md bg-red px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Delete Item</button>
+                      <div className="flex justify-center">
+                        <button
+                          className="p-1 text-white bg-lime-600 border border-slate-300 hover:border-indigo-600 rounded-md shadow-lg shadow-indigo-500/40 mt-4"
+                          onClick={() => cart.AddOnetoCart(product.name)}
+                        >
+                          Add to Cart
+                        </button>
                       </div>
-                      <button
-                        className="p-1 text-white bg-lime-600 border border-slate-300 hover:border-indigo-600 rounded-md shadow-lg shadow-indigo-500/40"
-                        onClick={() => cart.AddOnetoCart(product.name)}
-                      >
-                        Add to Cart
-                      </button>
                     </div>
                   </div>
                 </div>

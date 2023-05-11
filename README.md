@@ -4,7 +4,7 @@
 
 ## Description
 
-In Project 3 we use React, GraphQL, Node, MongoDB, Mongoose and Heroku to build a MERN stack single page application. We created a super market website that allows the user to search recipes in order to find the ingredients the user would like to purchse. The user is able to add, delete or modify their cart before checking out. Required technologies include: JWT, Swipe and Heroku.
+In Project 3 we use React, GraphQL, Node, MongoDB, Mongoose and Heroku to build a MERN stack single page application. We created a super market website that allows the user to search recipes in order to find the ingredients the user would like to purchase. The user is able to add, delete or modify their cart before checking out. Required technologies include: JWT, Swipe and Heroku.
 
 [GitHub]  <https://github.com/JoshEflin/JAD>
 

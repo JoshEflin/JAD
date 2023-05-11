@@ -1,9 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { HealthLabels, Ingredients, MealType } from "./utils";
 
 export function RecipeCard({ cardData }) {
   const [viewFullRecipe, setViewFullRecipe] = useState(false);
   const [animatedCardIndex, setAnimatedCardIndex] = useState(-1);
+
+  useEffect(() => {
+    if (viewFullRecipe) {
+      window.scrollTo(0, 0);
+    }
+  }, [viewFullRecipe]);
 
   const handleClick = (index) => {
     setAnimatedCardIndex(index);
@@ -32,7 +38,7 @@ export function RecipeCard({ cardData }) {
       const mealType = getRecipe[animatedCardIndex].mealType;
       return (
         <div className="w-3/4 mx-auto">
-          <h3 className="mb-4 font-recipe text-5xl text-black cursor-default">{label}</h3>
+          <h3 className="mb-4 font-semibold text-5xl text-black cursor-default">{label}</h3>
           <button
             className="mb-4 text-white right-2.5 bottom-2.5 bg-green-700 hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 cursor-pointer"
             onClick={() => handleModalClick()}
@@ -47,12 +53,12 @@ export function RecipeCard({ cardData }) {
 
           <MealType mealType={mealType} />
           <p className='cursor-default'>{Math.floor(calories)} Calories</p>
-          <p className="mb-6 font-recipe text-2xl cursor-default">
+          <p className="mb-6 font-semibold text-2xl cursor-default">
             {" "}
             Are you some kind of Crazy Vegan or something?! Don't fret, this
             recipe is:
           </p>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-4 gap-y-3 cursor-default">
+          <div className="font-medium grid grid-cols-1 lg:grid-cols-2 gap-x-4 gap-y-3 cursor-default">
             <HealthLabels healthLabels={healthLabels} />
             <Ingredients ingredients={ingredients} />
           </div>
@@ -71,7 +77,7 @@ export function RecipeCard({ cardData }) {
             return (
               <div
                 key={index}
-                className={`group  rounded-lg p-4 bg-green-300 hover:bg-green-400 cursor-pointer ${
+                className={`group rounded-lg p-4 bg-green-300 hover:bg-green-400 cursor-pointer ${
                   isAnimated ? "animate-puffOut" : ""
                 } shadow-md hover:shadow-xl transitional-all duration-300`}
                 onClick={() => handleClick(index)}

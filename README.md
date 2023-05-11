@@ -26,7 +26,7 @@ Daniel Gardner <https://github.com/gardnerd06>
 
 If you'd like to contribute, here's how to reach us with additional questions 
 [Alex]<in/alexander-weiss-571356174>
-[Josh]<>
+[Josh]<in/josh-eflin-4378baa7>
 [Daniel]<in/daniel-gardner-562020253>
 
 ## License

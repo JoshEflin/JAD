@@ -5,6 +5,7 @@ const ingredientSchema = new mongoose.SchemaTypeOptions({
     price: { type: Number, required: true },
     stock: { type: Number, required: true },
     photo: { type: String },
+    description: {type: String },
 
 })
 

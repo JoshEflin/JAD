@@ -39,11 +39,18 @@ const typeDefs = gql`
     cautions: [String]
     healthLabels: [String]
   }
+
+  type Checkout {
+    session: ID
+  }
+
+
   type Query {
     users: [User]
     user(username: String!): User
     me: User
     getItems: [Ingredient]
+    checkout(products: [String]!): Checkout
   }
 
   type Mutation {

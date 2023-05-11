@@ -15,7 +15,6 @@ import Footer from './components/Footer'
 import Products from './components/Products';
 import Homepage from './components/Homepage'
 import './App.css'
-import Success from './pages/Success'
 import CartProvider from './utils/cartContext';
 
 

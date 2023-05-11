@@ -7,6 +7,12 @@ import Profile from '../../pages/Profile'
 import { CartContext } from '../../utils/cartContext';
 import { Button } from 'react-bootstrap';
 import newIcon from '../../assets/NewLogo.png'
+import { loadStripe } from '@stripe/stripe-js';
+import { useLazyQuery } from '@apollo/client';
+import { QUERY_CHECKOUT } from '../../utils/queries';
+
+const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+
 
 import Auth from "../../utils/auth";
 
@@ -26,6 +32,7 @@ function classNames(...classes) {
 
 
 const Header = () => {
+  const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
   const [show, setShow] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
@@ -36,12 +43,26 @@ const Header = () => {
       }
     };
 
+    
+  
+
     window.addEventListener('scroll', handleScroll);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    if (data) {
+      stripePromise.then((res) => {
+        res.redirectToCheckout({ sessionId: data.checkout.session });
+      });
+    }
+  }, [data]);
+
+ 
+
 
   const headerStyle = {
     display: show ? 'block' : 'none'
@@ -53,6 +74,20 @@ const Header = () => {
   const handleShow = () => setOpen(true);
   const cancelButtonRef = useRef(null)
   const cart = useContext(CartContext);
+
+  function submitCheckout() {
+    const productIds = [];
+    
+    cart.items.forEach((item) => {
+      console.log(item);
+        productIds.push(item.foodItem); 
+    });
+    console.log(productIds);
+    getCheckout({
+      
+      variables: { products: productIds },
+    });
+  }
   
     const logout = (event) => {
       event.preventDefault();
@@ -128,7 +163,7 @@ const productsCount = cart.items.reduce((sum, product)=> sum + product.stock,0);
                                 </div>
                                 
                                 <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                                <Button className='mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto'>
+                                <Button className='mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto' onClick={submitCheckout}>
                                                   Purchase items!
                                                 </Button>
                                     <button

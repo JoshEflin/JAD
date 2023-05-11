@@ -100,11 +100,8 @@ export default function CartProvider({ children }) {
         let totalCost = 0;
         cartProducts.map((cartItem) => {
             const productData = CartQuantity(cartItem.foodItem);
-            console.log({cartitem: cartItem.stock});
-            console.log({cart:productData})
             totalCost += (cartItem.price * cartItem.stock);
         });
-        console.log(totalCost)
         return totalCost;
     }
 

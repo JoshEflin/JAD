@@ -28,3 +28,11 @@ query me {
     email
   }
 }`;
+
+export const QUERY_CHECKOUT = gql`
+  query getCheckout($products: [String]!) {
+    checkout(products: $products) {
+      session
+    }
+  }
+`;

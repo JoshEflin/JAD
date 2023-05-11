@@ -11,6 +11,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/client';
 import { QUERY_CHECKOUT } from '../../utils/queries';
 
+
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 
@@ -117,6 +118,7 @@ const productsCount = cart.items.reduce((sum, product)=> sum + product.stock,0);
                                                 {cart.items.map((currentProduct) => (
                                                 <>
                                                 <h1 key={currentProduct.id}>{currentProduct.foodItem}</h1>
+                                                <img src={currentProduct.photo}></img>
                                                 <p> Quantity: {currentProduct.stock}</p>
                                                 <p>Price: ${currentProduct.price} </p>
                                                 <Button className='mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto' onClick={()=> cart.DeletefromCart(currentProduct.foodItem)}>Remove</Button>

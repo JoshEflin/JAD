@@ -39,7 +39,7 @@ const Products = () => {
                       <div>Current Stock: {product.stock}</div>
                       <div className='flex items-center justify-around'>
                         <div className='flex items-center'>
-                          <label htmlFor={`cart-${product._id}`} className='mr-2 font-serif'>In Cart: </label>
+                          <label htmlFor={`cart-${product._id}`} className='mr-2 font-serif'> Cart: </label>
                           <button id={`cart-${product._id}`} onClick={() => cart.AddOnetoCart(product.name)} className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Add</button>
                         <button onClick={() => cart.RemoveOnefromCart(product.name)} className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Remove</button>
                         </div>

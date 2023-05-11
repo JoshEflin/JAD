@@ -41,7 +41,7 @@ const Header = () => {
   };
 const productsCount = cart.items.reduce((sum, product)=> sum + product.stock,0);
   return (
-    <Disclosure as="nav" className={`bg-green-800 sticky w-full top-0`}>
+    <Disclosure as="nav" className={`bg-green-800 sticky w-full top-0 z-10`}>
       {({ open }) => (
         <>
          <Transition.Root show={openM} as={Fragment}>

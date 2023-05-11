@@ -1,9 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { HealthLabels, Ingredients, MealType } from "./utils";
 
 export function RecipeCard({ cardData }) {
   const [viewFullRecipe, setViewFullRecipe] = useState(false);
   const [animatedCardIndex, setAnimatedCardIndex] = useState(-1);
+
+  useEffect(() => {
+    if (viewFullRecipe) {
+      window.scrollTo(0, 0);
+    }
+  }, [viewFullRecipe]);
 
   const handleClick = (index) => {
     setAnimatedCardIndex(index);

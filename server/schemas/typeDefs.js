@@ -20,6 +20,15 @@ const typeDefs = gql`
     description: String
     inStock: Boolean
   }
+
+  input IngredientInput {
+    foodItem: String
+    price: Float
+    stock: Float
+    photo: String
+    description: String
+  }
+
   type Ingredients {
     text: String
     quantity: Float
@@ -41,11 +50,18 @@ const typeDefs = gql`
     cautions: [String]
     healthLabels: [String]
   }
+
+  type Checkout {
+    session: ID
+  }
+
+
   type Query {
     users: [User]
     user(username: String!): User
     me: User
     getItems: [Ingredient]
+    checkout(products: [IngredientInput]!): Checkout
   }
 
   type Mutation {

@@ -3,6 +3,7 @@ const { User, Ingredient } = require("../models");
 const { signToken } = require("../utils/auth");
 const { apiCall } = require("./gettingdata");
 const fs = require("fs");
+const stripe = require('stripe')(process.env.STRIPE_KEY)
 
 const resolvers = {
   Query: {
@@ -16,11 +17,49 @@ const resolvers = {
       if (context.user) {
         return User.findOne({ _id: context.user._id });
       }
-      throw new AuthenticationError("You need to be logged in!");
+      throw new AuthenticationError('You need to be logged in!');
     },
+    checkout: async (parent, args, context) => {
+      const url = new URL(context.headers.referer).origin;
+      const line_items = [];
+
+      console.log(args.products);
+
+      for (let i = 0; i < args.products.length; i++) {
+        const product = await stripe.products.create({
+          name: args.products[i].foodItem,
+          description: args.products[i].description,
+          images: [args.products[i].photo]
+
+        });
+
+        const price = await stripe.prices.create({
+          product: product.id,
+          unit_amount: args.products[i].price * 100,
+          currency: 'usd',
+        });
+
+        line_items.push({
+          price: price.id,
+          quantity: args.products[i].stock
+        });
+      }
+      console.log(line_items);
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        line_items,
+        mode: 'payment',
+        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${url}/`
+      });
+      return { session: session.id };
+    }
   },
 
+
+
   Mutation: {
+
     getRecipe: async (parent, { foodStr }) => {
       const recipes = await apiCall(foodStr);
       const dbItems = await Ingredient.find({});

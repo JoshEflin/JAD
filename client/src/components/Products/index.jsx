@@ -7,11 +7,13 @@ import  Description from "./descriptions"
 
 const Products = () => {
   const cart = useContext(CartContext);
+<<<<<<< HEAD
   const [descriptionIndex, setDescriptionIndex]= useState(-1)
   const [viewDescription, setViewDescription]=useState(false)
+=======
+>>>>>>> d75b26327e8468048a0d6cef72a6cc52169bdd6c
   const { loading, data } = useQuery(QUERY_ITEMS);
   const products = data?.getItems || [];
-  console.log(products)
 
   // const descriptionOpen = (index) => {
   //   setDescriptionIndex(index)

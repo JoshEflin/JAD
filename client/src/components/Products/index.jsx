@@ -9,6 +9,7 @@ const Products = () => {
   // const [search, setSearch] = useState("");
   const { loading, data } = useQuery(QUERY_ITEMS);
   const products = data?.getItems || [];
+  console.log(products)
 
  
   return (

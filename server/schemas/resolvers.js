@@ -25,11 +25,7 @@ const resolvers = {
       // console.log(foodStr)
       const recipes = await getRecipe(foodStr);
       // console.log(recipes)
-      // fs.writeFile("test.txt", JSON.stringify(recipes[0]), { encoding: "utf-8"}, function(err) {
-      //   if (err) {
-      //     console.error("you screwed it up");
-      //   }
-      // })      
+            
       return recipes;
     },
     addUser: async (parent, { username, email, password }) => {

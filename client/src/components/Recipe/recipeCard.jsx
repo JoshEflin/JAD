@@ -34,7 +34,7 @@ export function RecipeCard({ cardData }) {
         <div className="w-3/4 mx-auto">
           <h3 className="mb-4 font-recipe text-5xl text-black">{label}</h3>
           <button
-            className="mb-4 text-white right-2.5 bottom-2.5 bg-green-700 hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 "
+            className="mb-4 text-white right-2.5 bottom-2.5 bg-green-700 hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 cursor-pointer"
             onClick={() => handleModalClick()}
           >
             {" "}
@@ -42,7 +42,7 @@ export function RecipeCard({ cardData }) {
           </button>
           <img
             src={image}
-            className=" mx-auto lg:h-1/2 lg:w-1/2 object-cover  hover:opacity-75"
+            className="mx-auto lg:h-1/2 lg:w-1/2 object-cover rounded-lg shadow-xl mb-4"
           />
 
           <MealType mealType={mealType} />
@@ -52,7 +52,7 @@ export function RecipeCard({ cardData }) {
             Are you some kind of Crazy Vegan or something?! Don't fret, this
             recipe is:
           </p>
-          <div className="grid grid-cols-4 gap-x-1">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-4 gap-y-3">
             <HealthLabels healthLabels={healthLabels} />
             <Ingredients ingredients={ingredients} />
           </div>

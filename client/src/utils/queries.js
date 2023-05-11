@@ -29,3 +29,11 @@ query me {
     email
   }
 }`;
+
+export const QUERY_CHECKOUT = gql`
+  query getCheckout($products: [IngredientInput]!) {
+    checkout(products: $products) {
+      session
+    }
+  }
+`;

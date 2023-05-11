@@ -30,6 +30,7 @@ function CouponSlider() {
         centerMode: true,
         centerPadding: "70px 40px",
         responsive: [
+        
         {
             breakpoint: 1024,
             settings: {
@@ -119,7 +120,7 @@ const Homepage = () => {
                     </div>
                 </div> */}
             <h1 className='text-5xl font-semibold my-8'>Coupons & Deals</h1>
-            <CouponSlider />
+                <CouponSlider />
             </div>
     )
 }

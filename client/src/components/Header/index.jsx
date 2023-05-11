@@ -181,19 +181,19 @@ const productsCount = cart.items.reduce((sum, product)=> sum + product.stock,0);
                       classNames = {classNames}
                     />
                     {Auth.loggedIn() ? (
-                  <>
-                  <Link className='text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium' onClick={logout}>
-                  Logout
-                  </Link> 
-                  </>
-                  ) : (
-                  <NavComponent
-                  navigation={rightNav}
-                  isCurrent={isCurrent}
-                  handleNavClick={handleNavClick}
-                  classNames={classNames}
-                  />
-                  )}
+                      <>
+                      <Link className='text-gray-300 p-2 rounded-md hover:text-white hover:underline mx-3 text-lg font-medium' onClick={logout}>
+                      Logout
+                      </Link> 
+                      </>
+                      ) : (
+                      <NavComponent
+                      navigation={rightNav}
+                      isCurrent={isCurrent}
+                      handleNavClick={handleNavClick}
+                      classNames={classNames}
+                      />
+                    )}
                     
                   </div>
                 </div>

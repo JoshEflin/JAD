@@ -1,16 +1,30 @@
 import { useQuery } from "@apollo/client";
+import { useState } from "react";
 import { QUERY_ITEMS } from "../../utils/queries";
 import {  useContext } from "react";
 import { CartContext } from "../../utils/cartContext";
+import  Description from "./descriptions"
 
 const Products = () => {
   const cart = useContext(CartContext);
-  // const [getGroceries, setGroceries] = useState([]);
-  // const [search, setSearch] = useState("");
+  const [descriptionIndex, setDescriptionIndex]= useState(-1)
+  const [viewDescription, setViewDescription]=useState(false)
   const { loading, data } = useQuery(QUERY_ITEMS);
   const products = data?.getItems || [];
   console.log(products)
 
+  // const descriptionOpen = (index) => {
+  //   setDescriptionIndex(index)
+  //   setViewDescription(!viewDescription);
+  // }
+  // const descriptionClose = () => {
+  //   setDescriptionIndex(-1)
+  //   setViewDescription(false)
+  // }
+
+  // if(descriptionIndex != -1) {
+
+  // }
  
   return (
     <main>
@@ -24,10 +38,10 @@ const Products = () => {
             : "You have no items in stock!"}
         </h2>
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 ">
-          {products.map((product) => {
+          {products.map((product,i) => {
             return (
               
-              <div key={product._id} className='max-w-sm rounded overflow-hidden shadow-lg'>
+              <div key={i} className='max-w-sm rounded overflow-hidden shadow-lg'>
                 <div>
                     {product.photo ? (
                       <img

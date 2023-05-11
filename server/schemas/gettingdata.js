@@ -1,4 +1,5 @@
 const axios = require("axios");
+const { Ingredient } = require("../models/groceries");
 require("dotenv").config();
 const id = process.env.API_ID;
 const key = process.env.API_KEY;
@@ -18,7 +19,7 @@ class Recipe {
   }
 }
 
-async function getRecipe(foodStr) {
+async function apiCall(foodStr) {
   // console.log(foodStr)
   console.log(id);
   console.log(key);
@@ -28,8 +29,34 @@ async function getRecipe(foodStr) {
   const hits = edamamData.data.hits;
   const recipes = hits.map((hit) => {
     // console.log(hit)
-      return new Recipe(hit.recipe);
+    return new Recipe(hit.recipe);
   });
-  return recipes
+  return recipes;
 }
-module.exports = getRecipe;
+
+// async function MutateRecipe(foodStr) {
+//   const recipes = await getRecipe(foodStr);
+//   const dbItems = await Ingredient.find({});
+//   console.log(dbItems);
+//   const { getRecipe } = recipes;
+//   return recipes.map((recipe) => {
+//     const ingredients = recipe.ingredients;
+//     return {
+//       ...recipe,
+//       ingredients: ingredients.filter((fromCall) => {
+//         !dbItems.some((grocery) => grocery.name === fromCall.food);
+//       }),
+//     };
+
+    // const updatedIngredients = ingredients.map((ingredient)=>{
+    //   const matchingIngredient = dbItems.some((food)=>food.name ===ingredient &&food.inStock===true
+    //   );
+    //   if(!matchingIngredient){
+    //     return {name:ingredient, price:food.price, stock:food.stock, photo:food.photo, description:food.description, inStock:false}
+    //   }else {
+    //     return{...updatedIngredients}
+    //   }
+//   });
+// }
+
+module.exports = { apiCall};

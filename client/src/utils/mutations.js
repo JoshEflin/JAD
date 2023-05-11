@@ -40,6 +40,7 @@ mutation getRecipe($foodStr: String!) {
       quantity
       text
       weight
+      inStock
     }
   }
 }`;
@@ -53,6 +54,7 @@ mutation Item($foodItem: String!) {
     stock
     photo
     description
+    inStock
   }
 }
   `;

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import recipeIcon from '../../assets/recipeicon.png'
@@ -71,6 +72,8 @@ function CouponSlider() {
 }
 
 const Homepage = () => {
+    const [recipeHovered, setRecipeHovered] = useState(false);
+    const [groceryHovered, setGroceryHovered] = useState(false);
     const { username: userParam } = useParams();
     const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
         variables: { username: userParam },
@@ -88,14 +91,24 @@ const Homepage = () => {
                 <h1 className='text-5xl font-semibold'>Check out our categories!</h1>
                 <div className='flex flex-row justify-center'>
                     <div className='flex-col'>
-                        <Link className='m-5' to='/recipes'>
-                            <img src={recipeIcon} className='w-40 h-40' alt='Recipe Icon'/>
+                        <Link
+                        className='m-5'
+                        to='/recipes'
+                        onMouseEnter={() => setRecipeHovered(true)}
+                        onMouseLeave={() => setRecipeHovered(false)}
+                        >
+                            <img src={recipeIcon} className={`w-40 h-40 ${recipeHovered ? 'filter brightness-200'  : ''}`} alt='Recipe Icon'/>
                         </Link>
                         <h2 className='text-xl font-semibold text-center'>Recipes</h2>
                     </div>
                     <div className='flex-col'>
-                        <Link className='m-5' to='/products'>
-                            <img src={groceryIcon} className='w-40 h-40' alt='Grocery Icon'/>
+                        <Link
+                        className='m-5'
+                        to='/products'
+                        onMouseEnter={() => setGroceryHovered(true)}
+                        onMouseLeave={() => setGroceryHovered(false)}
+                        >
+                            <img src={groceryIcon} className={`w-40 h-40 ${groceryHovered ? 'filter brightness-200'  : ''}`} alt='Grocery Icon'/>
                         </Link>
                         <h2 className='text-xl font-semibold text-center'>Products</h2>
                     </div>

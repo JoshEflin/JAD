@@ -75,9 +75,7 @@ export const Ingredients = ({ ingredients }) => {
             className="object-cover rounded-lg h-64 w-full"
           />
         </div>
-        <span className="font-recipe text-2xl font-bold p-2 cursor-default">
-          {val.food.toUpperCase()}
-        </span>
+        <span className="font-semibold text-2xl p-2 cursor-default">{val.food.toUpperCase()}</span>
         <div className="p-3 flex-grow">
           <p className="text-gray-800 cursor-default">{val.text}</p>
         </div>

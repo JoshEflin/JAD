@@ -59,28 +59,47 @@ const resolvers = {
 
 
   Mutation: {
-
     getRecipe: async (parent, { foodStr }) => {
       const recipes = await apiCall(foodStr);
-      const dbItems = await Ingredient.find({});
-      const updatedRecipes = recipes.map((recipe) => {
+      const dbIngredients = await Ingredient.find({});
+      const ingredientMap = new Map(dbIngredients.map((dbIngredient) => [dbIngredient.name.toUpperCase(), dbIngredient]))
+    
+      return recipes.map((recipe) => {
+        const ingredients = recipe.ingredients.map((recipeIngredient) => {
+          return {
+            ...recipeIngredient,
+            inStock: !!ingredientMap.get(recipeIngredient.food.toUpperCase())
+          }
+        })
+        
         return {
           ...recipe,
-          ingredients: recipe.ingredients.map((ingredient) => {
-            const found = dbItems.find((item) => {
-              return item.name === ingredient.food.toUpperCase();
-            });
-            return {
-              ...ingredient,
-              inStock: found ? true : false,
-            };
-          })
+          ingredients
         }
-          
-      });
-      console.log(updatedRecipes)
-      return updatedRecipes
+      }) 
     },
+
+    // getRecipe: async (parent, { foodStr }) => {
+    //   const recipes = await apiCall(foodStr);
+    //   const dbItems = await Ingredient.find({});
+    //   const updatedRecipes = recipes.map((recipe) => {
+    //     return {
+    //       ...recipe,
+    //       ingredients: recipe.ingredients.map((ingredient) => {
+    //         const found = dbItems.find((item) => {
+    //           return item.name === ingredient.food.toUpperCase();
+    //         });
+    //         return {
+    //           ...ingredient,
+    //           inStock: found ? true : false,
+    //         };
+    //       })
+    //     }
+          
+    //   });
+    //   console.log(updatedRecipes)
+    //   return updatedRecipes
+    // },
     addUser: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
       const token = signToken(user);

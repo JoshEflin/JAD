@@ -46,7 +46,7 @@ function App() {
         <CartProvider>
         <div>
           <Header />
-          <div>
+          <div className='min-h-screen'>
             <Routes>
               <Route
                 path='/'

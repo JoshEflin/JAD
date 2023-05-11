@@ -30,46 +30,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-
 const Header = () => {
-  const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
-  const [show, setShow] = useState(false);
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.pageYOffset === 0) {
-        setShow(false);
-      } else {
-        setShow(true);
-      }
-    };
-
-    
-  
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (data) {
-      stripePromise.then((res) => {
-        res.redirectToCheckout({ sessionId: data.checkout.session });
-      });
-    }
-  }, [data]);
-
- 
-
-
-  const headerStyle = {
-    display: show ? 'block' : 'none'
-  };
-
-  
-
   const [openM, setOpen] = useState(false)
   const handleShow = () => setOpen(true);
   const cancelButtonRef = useRef(null)
@@ -100,7 +61,7 @@ const Header = () => {
   };
 const productsCount = cart.items.reduce((sum, product)=> sum + product.stock,0);
   return (
-    <Disclosure as="nav" className={`bg-green-800 ${headerStyle}`}>
+    <Disclosure as="nav" className={`bg-green-800 sticky w-full top-0`}>
       {({ open }) => (
         <>
          <Transition.Root show={openM} as={Fragment}>
@@ -215,6 +176,20 @@ const productsCount = cart.items.reduce((sum, product)=> sum + product.stock,0);
                       handleNavClick={handleNavClick}
                       classNames = {classNames}
                     />
+                    {Auth.loggedIn() ? (
+                      <>
+                      <Link className='text-gray-300 p-2 rounded-md hover:text-white hover:underline mx-3 text-lg font-medium' onClick={logout}>
+                      Logout
+                      </Link> 
+                      </>
+                      ) : (
+                      <NavComponent
+                      navigation={rightNav}
+                      isCurrent={isCurrent}
+                      handleNavClick={handleNavClick}
+                      classNames={classNames}
+                      />
+                    )}
                     
                   </div>
                 </div>
@@ -222,7 +197,7 @@ const productsCount = cart.items.reduce((sum, product)=> sum + product.stock,0);
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                {/* LOGIN LOGOUT CART GOES HERE */}
 
-                {Auth.loggedIn() ? (
+                {/* {Auth.loggedIn() ? (
                   <>
                   <Link className='text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium' onClick={logout}>
                   Logout
@@ -235,7 +210,7 @@ const productsCount = cart.items.reduce((sum, product)=> sum + product.stock,0);
                 handleNavClick={handleNavClick}
                 classNames={classNames}
                  />
-                )}
+                )} */}
                 <button className="text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium" onClick={handleShow}>Cart {productsCount} Items</button>
                 {/* <button
                   type="button"
@@ -245,7 +220,7 @@ const productsCount = cart.items.reduce((sum, product)=> sum + product.stock,0);
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
                 </button> */}
                 {/* Profile dropdown */}
-                <Menu as="div" className="relative ml-3">
+                {/* <Menu as="div" className="relative ml-3">
                   <div>
                     <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="sr-only">Open user menu</span>
@@ -291,7 +266,7 @@ const productsCount = cart.items.reduce((sum, product)=> sum + product.stock,0);
                       </Menu.Item>
                     </Menu.Items>
                   </Transition>
-                </Menu>
+                </Menu> */}
               </div>
             </div>
           </div>

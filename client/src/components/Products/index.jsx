@@ -7,6 +7,7 @@ const Products = () => {
   const cart = useContext(CartContext);
   const { loading, data } = useQuery(QUERY_ITEMS);
   const products = data?.getItems || [];
+  console.log(products)
 
  
   return (

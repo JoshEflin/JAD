@@ -17,6 +17,7 @@ const typeDefs = gql`
     price: Float
     stock: Float
     photo: String
+    description: String
   }
   type Ingredients {
     text: String

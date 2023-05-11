@@ -17,6 +17,7 @@ query GetItems {
       price
       stock
       photo
+      description
     }
   }`;
 

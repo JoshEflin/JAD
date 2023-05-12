@@ -3,6 +3,7 @@ import { useMutation } from "@apollo/client";
 import { RecipeCard } from "./recipeCard";
 import { GET_RECIPE } from "../../utils/mutations";
 
+
 const Recipe = () => {
   const [searchString, setSearchString] = useState("");
   const [getRecipe, { error, data }] = useMutation(GET_RECIPE);
@@ -24,10 +25,10 @@ const Recipe = () => {
       const { data } = await getRecipe({
         variables: { ...mutationObj },
       });
-      setCardData(data);
+      await setCardData(data);
       console.log(cardData);
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 

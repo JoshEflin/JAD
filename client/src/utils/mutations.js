@@ -40,9 +40,12 @@ mutation getRecipe($foodStr: String!) {
       quantity
       text
       weight
+      inStock
     }
   }
 }`;
+
+// FOR CART
 export const GET_ITEM = gql`
 mutation Item($foodItem: String!) {
   item(foodItem: $foodItem) {
@@ -51,10 +54,11 @@ mutation Item($foodItem: String!) {
     stock
     photo
     description
+    inStock
   }
 }
   `;
-
+// stock needs to be set before sending back, this query will set thee stock to the stock value passed in
 export const UPDATE_INVENTORY = gql`
 mutation Stock($name: String, $stock: Int) {
   stock(name: $name, stock: $stock) {

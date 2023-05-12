@@ -208,24 +208,26 @@ const productsCount = cart.items.reduce((sum, product)=> sum + product.stock,0);
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-               {/* LOGIN LOGOUT CART GOES HERE */}
-
-                {/* {Auth.loggedIn() ? (
+               
+                {Auth.loggedIn() ? (
                   <>
-                  <Link className='text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium' onClick={logout}>
-                  Logout
-                </Link> 
-                </>
-                ) : (
-                <NavComponent
-                navigation={rightNav}
-                isCurrent={isCurrent}
-                handleNavClick={handleNavClick}
-                classNames={classNames}
-                 />
-                )} */}
                 <button className="text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium" onClick={handleShow}>Cart {productsCount} Items</button>
-                {/* <button
+                </>
+                 ) : (
+                  <>
+                  <Link className="text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium" to={"/Login"}>Cart {productsCount} Items</Link>
+                  </>
+                  )
+                }
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 {/* <button
                   type="button"
                   className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                 >

@@ -37,7 +37,7 @@ function CouponSlider() {
             settings: {
             slidesToShow: 3,
             slidesToScroll: 3,
-            centerPadding: "40px",
+            centerPadding: "40px 40px",
             },
         },
         {
@@ -53,7 +53,7 @@ function CouponSlider() {
             settings: {
             slidesToShow: 1,
             slidesToScroll: 1,
-            centerPadding: "10px",
+            centerPadding: "10px 40px",
             },
         },
         ],

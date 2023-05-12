@@ -11,6 +11,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/client';
 import { QUERY_CHECKOUT } from '../../utils/queries';
 
+
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 
@@ -117,6 +118,7 @@ const productsCount = cart.items.reduce((sum, product)=> sum + product.stock,0);
                                                 {cart.items.map((currentProduct) => (
                                                 <>
                                                 <h1 key={currentProduct.id}>{currentProduct.foodItem}</h1>
+                                                <img src={currentProduct.photo}></img>
                                                 <p> Quantity: {currentProduct.stock}</p>
                                                 <p>Price: ${currentProduct.price} </p>
                                                 <Button className='mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto' onClick={()=> cart.DeletefromCart(currentProduct.foodItem)}>Remove</Button>
@@ -206,24 +208,26 @@ const productsCount = cart.items.reduce((sum, product)=> sum + product.stock,0);
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-               {/* LOGIN LOGOUT CART GOES HERE */}
-
-                {/* {Auth.loggedIn() ? (
+               
+                {Auth.loggedIn() ? (
                   <>
-                  <Link className='text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium' onClick={logout}>
-                  Logout
-                </Link> 
-                </>
-                ) : (
-                <NavComponent
-                navigation={rightNav}
-                isCurrent={isCurrent}
-                handleNavClick={handleNavClick}
-                classNames={classNames}
-                 />
-                )} */}
                 <button className="text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium" onClick={handleShow}>Cart {productsCount} Items</button>
-                {/* <button
+                </>
+                 ) : (
+                  <>
+                  <Link className="text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium" to={"/Login"}>Cart {productsCount} Items</Link>
+                  </>
+                  )
+                }
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 {/* <button
                   type="button"
                   className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                 >

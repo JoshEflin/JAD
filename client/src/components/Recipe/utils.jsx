@@ -82,7 +82,7 @@ export const Ingredients = ({ ingredients }) => {
         <div className="flex-shrink-0">
           <button
             disabled={!val.inStock}
-            className={val.inStock ? " mx-auto mb-3 font-recipe text-2xl text-white relative bottom-2.5 bg-green-700 hover:bg-green-600 focus:ring-4 focus:outline-none rounded-md px-2 pt-1": "mx-auto mb-3 font-recipe text-2xl text-white relative bottom-2.5 bg-red-700 hover:bg-red-600 focus:ring-4 focus:outline-none rounded-md px-2 pt-1"}
+            className={val.inStock ? " mx-auto mb-3 font-recipe text-2xl text-white relative bottom-2.5 bg-green-700 hover:bg-green-600 focus:ring-4 focus:outline-none rounded-md px-2 pt-1": "mx-auto mb-3 font-recipe text-2xl text-white relative bottom-2.5 bg-red-700 rounded-md px-2 pt-1"}
             onClick={ () => cart.AddOnetoCart(val.food.toUpperCase())}
                 
             

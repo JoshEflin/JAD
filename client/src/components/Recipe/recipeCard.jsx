@@ -39,13 +39,7 @@ export function RecipeCard({ cardData }) {
       const mealType = getRecipe[animatedCardIndex].mealType;
       return (
         <div className="w-3/4 mx-auto">
-<<<<<<< HEAD
-          <h3 className="mb-4 font-recipe text-5xl text-black cursor-default">
-            {label}
-          </h3>
-=======
           <h3 className="mb-4 font-semibold text-5xl text-black cursor-default">{label}</h3>
->>>>>>> de361f9bd3cc7c07bc5f7e2ea4e790c8d357c6df
           <button
             className="mb-4 text-white right-2.5 bottom-2.5 bg-green-700 hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 cursor-pointer"
             onClick={() => handleModalClick()}
@@ -59,13 +53,8 @@ export function RecipeCard({ cardData }) {
           />
 
           <MealType mealType={mealType} />
-<<<<<<< HEAD
-          <p className="cursor-default">{Math.floor(calories)} Calories</p>
-          <p className="mb-6 font-recipe text-2xl cursor-default">
-=======
           <p className='cursor-default'>{Math.floor(calories)} Calories</p>
           <p className="mb-6 font-semibold text-2xl cursor-default">
->>>>>>> de361f9bd3cc7c07bc5f7e2ea4e790c8d357c6df
             {" "}
             Are you some kind of Crazy Vegan or something?! Don't fret, this
             recipe is:

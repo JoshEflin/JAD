@@ -1,0 +1,9 @@
+{
+  "_id": "new ObjectId('645c42b20f17373b0e50be7a')",
+  "name": "SALT",
+  "price": 3,
+  "stock": -1,
+  "photo": "https://www.edamam.com/food-img/694/6943ea510918c6025795e8dc6e6eaaeb.jpg",
+  "description": "Salt is a mineral substance used to enhance the flavor of food. It is commonly used in cooking and baking as a seasoning and preservative.",
+  "__v": 0
+}

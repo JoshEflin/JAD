@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { HealthLabels, Ingredients, MealType } from "./utils";
 
 export function RecipeCard({ cardData }) {
+  console.log(cardData);
   const [viewFullRecipe, setViewFullRecipe] = useState(false);
   const [animatedCardIndex, setAnimatedCardIndex] = useState(-1);
 
@@ -89,10 +90,12 @@ export function RecipeCard({ cardData }) {
                     className="absolute inset-0 object-cover w-full h-full rounded-lg group-hover:opacity-75 transition-opacity duration-300"
                   />
                 </div>
-                <div className='mt-4'>
+                <div className="mt-4">
                   <h3 className="text-lg font-medium text-gray-800">{label}</h3>
                   <MealType mealType={mealType} />
-                  <p className='mt-1 text-sm text-gray-600'>{Math.floor(calories)} Calories</p>
+                  <p className="mt-1 text-sm text-gray-600">
+                    {Math.floor(calories)} Calories
+                  </p>
                 </div>
               </div>
             );

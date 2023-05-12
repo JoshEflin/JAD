@@ -18,6 +18,7 @@ query GetItems {
       stock
       photo
       description
+      inStock
     }
   }`;
 

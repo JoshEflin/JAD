@@ -18,6 +18,7 @@ const typeDefs = gql`
     stock: Float
     photo: String
     description: String
+    inStock: Boolean
   }
 
   input IngredientInput {
@@ -37,12 +38,12 @@ const typeDefs = gql`
     foodCategory: String
     foodId: String
     image: String
+    inStock: Boolean
   }
   type Recipe {
     label: String
     image: String
     calories: Float
-    
     dishType: [String]
     mealType: [String]
     ingredients: [Ingredients]

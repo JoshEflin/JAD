@@ -10,7 +10,9 @@ const NavComponent = ({
     <Link
       to={`/${item.href}`}
       key={item.name}
-      onClick={() => handleNavClick(`${item.name}`)}
+      onClick={() => { handleNavClick(`${item.name}`)
+      window.scrollTo({ top: 0 });
+    }}
       className={classNames(
         isCurrent === item.name
           ? "text-white"

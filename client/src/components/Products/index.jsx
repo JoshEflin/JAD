@@ -69,7 +69,7 @@ const Products = () => {
                         </div>
                       <div className="flex justify-center">
                         <button
-                          className="p-1 text-white bg-lime-600 border border-slate-300 hover:border-indigo-600 rounded-md shadow-lg shadow-indigo-500/40 mt-4"
+                          className="p-1 text-white bg-lime-600 border-slate-300 hover:bg-lime-700 rounded-md shadow-lg shadow-indigo-500/40 mt-4"
                           onClick={() => cart.AddOnetoCart(product.name)}
                         >
                           Add to Cart

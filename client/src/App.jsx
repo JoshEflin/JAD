@@ -6,12 +6,7 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Recipe from "./components/Recipe";
@@ -63,8 +58,8 @@ function App() {
                 <Route path="/products" element={<Products />} />
                 <Route path="/recipes" element={<Recipe />} />
 
-                <Route exact path="/success" element={<Success />} />
-                <Route exact path="/cancel" element={<Cancel />} />
+                <Route path="/success" element={<Success />} />
+                <Route path="/cancel" element={<Cancel />} />
               </Routes>
             </div>
             <Footer />

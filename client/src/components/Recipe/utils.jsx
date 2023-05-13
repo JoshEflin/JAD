@@ -25,45 +25,7 @@ export const HealthLabels = ({ healthLabels }) => {
 };
 export const Ingredients = ({ ingredients }) => {
   const [getItem, { error, data }] = useMutation(GET_ITEM);
-
-  // const isInStock = async (string) => {
-  //   const queryObj = { foodItem: string };
-  //   try {
-  //     const { data } = await getItem({
-  //       variables: { ...queryObj },
-  //     });
-  //     return data;
-  //   } catch (e) {
-  //     console.error(e);
-  //   }
-  // };
   const cart = useContext(CartContext);
-
-  // const  AddIngredientToCart = lazy(async (str) => {
-  //   console.log(str)
-  //   const isAvailable = await isInStock(str);
-  //   console.log(isAvailable);
-  //   if (isAvailable.item === null) {
-  //     console.log("in if block");
-  //     console.log(isInStock(str));
-  //     return (
-  //       <button className=" mx-auto mb-3 font-recipe text-2xl text-white relative bottom-2.5 bg-yellow-500-700 hover:bg-yellow-600 focus:ring-4 focus:outline-none rounded-md px-2 pt-1">
-  //         Out of Stock!
-  //       </button>
-  //     );
-  //   } else {
-  //     console.log("in else block: this  food is available!");
-  //     console.log(isInStock(str));
-  //     return (
-  //       <button
-  //         className=" mx-auto mb-3 font-recipe text-2xl text-white relative bottom-2.5 bg-green-700 hover:bg-green-600 focus:ring-4 focus:outline-none rounded-md px-2 pt-1"
-  //         onClick={() => cart.AddOnetoCart(str.toUpperCase())}
-  //       >
-  //         Add to Cart!
-  //       </button>
-  //     );
-  //   }
-  // });
 
   const ingredientSpan = ingredients.map((val, i) => {
     console.log(val.inStock);
@@ -75,19 +37,23 @@ export const Ingredients = ({ ingredients }) => {
             className="object-cover rounded-lg h-64 w-full"
           />
         </div>
-        <span className="font-semibold text-2xl p-2 cursor-default">{val.food.toUpperCase()}</span>
+        <span className="font-semibold text-2xl p-2 cursor-default">
+          {val.food.toUpperCase()}
+        </span>
         <div className="p-3 flex-grow">
           <p className="text-gray-800 cursor-default">{val.text}</p>
         </div>
         <div className="flex-shrink-0">
           <button
             disabled={!val.inStock}
-            className={val.inStock ? " mx-auto mb-3 font-recipe text-2xl text-white relative bottom-2.5 bg-green-700 hover:bg-green-600 focus:ring-4 focus:outline-none rounded-md px-2 pt-1": "mx-auto mb-3 font-recipe text-2xl text-white relative bottom-2.5 bg-red-700 rounded-md px-2 pt-1"}
-            onClick={ () => cart.AddOnetoCart(val.food.toUpperCase())}
-                
-            
+            className={
+              val.inStock
+                ? " mx-auto mb-3 font-recipe text-2xl text-white relative bottom-2.5 bg-green-700 hover:bg-green-600 focus:ring-4 focus:outline-none rounded-md px-2 pt-1"
+                : "mx-auto mb-3 font-recipe text-2xl text-white relative bottom-2.5 bg-red-700 rounded-md px-2 pt-1"
+            }
+            onClick={() => cart.AddOnetoCart(val.food.toUpperCase())}
           >
-            {val.inStock ? "Add to Cart": "Out of Stock"}
+            {val.inStock ? "Add to Cart" : "Out of Stock"}
           </button>
         </div>
       </div>

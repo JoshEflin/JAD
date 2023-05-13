@@ -42,37 +42,46 @@ export default function CartProvider({ children }) {
         return quantity;
     }
 
-     function AddOnetoCart (name) {
-        const quantity = GetQuantity(name)
-        {quantity.then((data)=>{ 
-            console.log({insidecart: data})
-            const photo = data.photo;
-            const desc = data.description;
-            const price = data.price;
-            const cart = CartQuantity(name);
-             if (cart === 0) {
-                 setCartProducts(
-                [...cartProducts,
+    function AddOnetoCart(name) {
+        const quantityPromise = GetQuantity(name);
+      
+        quantityPromise.then((data) => {
+          const quantity = data.stock;
+      
+          if (quantity > 0) {
+            const existingProduct = cartProducts.find(
+              (product) => product.foodItem === name
+            );
+      
+            if (existingProduct) {
+              if (existingProduct.stock < quantity) {
+                setCartProducts((prevProducts) =>
+                  prevProducts.map((product) =>
+                    product.foodItem === name
+                      ? { ...product, stock: product.stock + 1 }
+                      : product
+                  )
+                );
+              } else {
+                console.log("Cannot add more items than available stock.");
+              }
+            } else {
+              setCartProducts((prevProducts) => [
+                ...prevProducts,
                 {
-                    foodItem: name,
-                    price: price,
-                    photo: photo,
-                    stock: 1,
-                    description: desc
-                }]
-            )   
-        } else {
-            setCartProducts(
-                cartProducts.map(
-                    product =>
-                        product.foodItem === name  ? { ...product, price: price , stock: product.stock + 1 }
-                            : product           
-                )
-            )
-           
+                  foodItem: name,
+                  price: data.price,
+                  photo: data.photo,
+                  stock: 1,
+                  description: data.description,
+                },
+              ]);
             }
-        })}
-        }
+          } else {
+            console.log("Item is out of stock.");
+          }
+        });
+      }
 
      function RemoveOnefromCart(name) {
         const quantity = CartQuantity(name);

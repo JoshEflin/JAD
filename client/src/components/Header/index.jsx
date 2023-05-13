@@ -33,6 +33,7 @@ function classNames(...classes) {
 }
 
 const Header = () => {
+  const headerRef = useRef(null);
   const[updateStock, {d}] = useMutation(UPDATE_INVENTORY);
 const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
@@ -81,7 +82,7 @@ console.log(cart.items);
   };
 const productsCount = cart.items.reduce((sum, product)=> sum + product.stock,0);
   return (
-    <Disclosure as="nav" className={`bg-green-800 sticky w-full top-0 z-10`}>
+    <Disclosure as="nav" className={`bg-green-800 sticky w-full top-0 z-10`}  ref={headerRef}>
       {({ open }) => (
         <>
          <Transition.Root show={openM} as={Fragment}>

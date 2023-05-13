@@ -18,7 +18,7 @@ const Products = () => {
         <h1 className="text-5xl font-bold tracking-tight text-gray-900 my-8 cursor-default">
           Welcome to JAD Grocery!
         </h1>
-        <h2 className="inline-block py-2 px-4 font-semibold text-white bg-green-600 mb-8 rounded-md cursor-default">
+        <h2 className="inline-block py-2 px-4 font-semibold text-white bg-lime-600 mb-8 rounded-md cursor-default">
           {products.length
             ? `Viewing ${products.length} ${
                 products.length === 1 ? "item" : "items"
@@ -27,25 +27,27 @@ const Products = () => {
         </h2>
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 ">
           {products.map((product, i) => {
+            
             return (
               <div
                 key={i}
-                className="max-w-sm rounded overflow-hidden shadow-lg"
+                className={`group rounded-lg pb-4 bg-gray-100 hover:bg-green-300 cursor-pointer shadow-md hover:shadow-xl transitional-all duration-300`}
+                // className="max-w-sm rounded overflow-hidden shadow-lg"
               >
                 <div>
                   {product.photo ? (
                     <img
-                      className="w-full h-48 object-cover object-center"
+                      className="w-full h-48 object-cover group-hover:opacity-75 rounded-t-lg object-center"
                       src={product.photo}
                       alt={`The picture for ${product.name}`}
                     />
                   ) : null}
                   <div className="px-6 py-4">
-                    <div className="font-bold text-xl mb-2">{product.name}</div>
-                    <p className="text-gray-700 font-medium mb-2">
+                    <div className="text-lg font-medium text-gray-800">{product.name}</div>
+                    <p className="text-gray-600 font-medium mb-1">
                       Price: ${product.price}
                     </p>
-                    <p className="text-gray-600 font-medium mb-4">
+                    <p className="text-gray-600 font-medium mb-2">
                       Current Stock: {product.stock}
                     </p>
                     <div className="flex items-center justify-center space-x-2">

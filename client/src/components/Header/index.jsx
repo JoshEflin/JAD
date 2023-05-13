@@ -15,7 +15,6 @@ import { UPDATE_INVENTORY } from '../../utils/mutations';
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
-
 import Auth from "../../utils/auth";
 
 const leftNav = [
@@ -116,7 +115,7 @@ const productsCount = cart.items.reduce((sum, product)=> sum + product.stock,0);
                                         <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-white-100 sm:mx-0 sm:h-10 sm:w-10">
                                         </div>
                                         <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-                                            <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900">
+                                            <Dialog.Title as="h3" className="text-base font-bold leading-6 text-gray-900">
                                                 SHOPPING CART
                                             </Dialog.Title>
                                             <div className="mt-2">
@@ -126,15 +125,16 @@ const productsCount = cart.items.reduce((sum, product)=> sum + product.stock,0);
                                                 <p className="text-sm text-gray-500">Items in the cart:</p>
                                                 {cart.items.map((currentProduct) => (
                                                 <>
-                                                <h1 key={currentProduct.id}>{currentProduct.foodItem}</h1>
-                                                <img src={currentProduct.photo}></img>
-                                                <p> Quantity: {currentProduct.stock}</p>
-                                                <p>Price: ${currentProduct.price} </p>
-                                                <Button className='mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto' onClick={()=> cart.DeletefromCart(currentProduct.foodItem)}>Remove</Button>
+                                                <h1 className="text-base font-bold leading-6 text-gray-900" key={currentProduct.id}>{currentProduct.foodItem}</h1>
+                                                <img className="w-1/4"src={currentProduct.photo}></img>
+                                                <p className="text-base font-bold leading-6 text-gray-900"> Quantity: {currentProduct.stock}</p>
+                                                <p className="text-gray-500">-{currentProduct.description}</p>
+                                                <p className="text-base font-bold leading-6 text-gray-900" >Price: ${currentProduct.price} </p>
+                                                <Button className='mt-3 inline-flex w-full justify-center rounded-md bg-red-500 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-red-300 sm:mt-0 sm:w-auto' onClick={()=> cart.DeletefromCart(currentProduct.foodItem)}>Remove</Button>
                                                 <hr></hr>
                                                  </>
                                                 ))}
-                                                <h2>Total: {cart.GetTotalCost().toFixed(2)}</h2>
+                                                <h2 className="text-2xl font-bold leading-6 text-gray-900">Total: {cart.GetTotalCost().toFixed(2)}</h2>
                                                 
                                                 </>  
                                                 : <h2>Your cart is empty!</h2>
@@ -145,13 +145,13 @@ const productsCount = cart.items.reduce((sum, product)=> sum + product.stock,0);
                                     </div>
                                 </div>
                                 
-                                <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                                <Button className='mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto' onClick={submitCheckout}>
+                                <div className="bg-gray-50 px-4 py-3 gap-x-2 sm:flex sm:flex-row-reverse sm:px-6">
+                                <Button className='mt-3 inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-green-400 sm:mt-0 sm:w-auto' onClick={submitCheckout}>
                                                   Purchase items!
                                                 </Button>
                                     <button
                                         type="button"
-                                        className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                                        className="mt-3 inline-flex w-full justify-center rounded-md bg-grey-400 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-100 sm:mt-0 sm:w-auto"
                                         onClick={() => setOpen(false)}
                                         ref={cancelButtonRef}
                                     >
@@ -218,7 +218,12 @@ const productsCount = cart.items.reduce((sum, product)=> sum + product.stock,0);
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                {Auth.loggedIn() ? (
+                  <>
                 <button className="text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium" onClick={handleShow}>Cart {productsCount} Items</button>
+                </>
+                ):( <Link className="text-gray-300 p-2 rounded-md hover:text-white hover:bg-gray-600 mx-3 text-sm font-medium" to="/Login">Cart {productsCount} Items</Link>
+                )}
               </div>
             </div>
           </div>

@@ -16,13 +16,13 @@ const Footer = () => {
                         <h2 className="mb-6 text-sm font-semibold text-white uppercase dark:text-white">Resources</h2>
                         <ul className="text-gray-400 dark:text-gray-400 font-medium">
                             <li className="mb-4">
-                                <a href="https://github.com/JoshEflin" className="hover:underline">Josh's Github</a>
+                                <a href="https://github.com/JoshEflin" className="hover:underline" target='_blank' rel="noreferrer">Josh's Github</a>
                             </li>
                             <li className="mb-4">
-                                <a href="https://github.com/alexander1262" className="hover:underline">Alex's Github</a>
+                                <a href="https://github.com/alexander1262" className="hover:underline" target='_blank' rel="noreferrer">Alex's Github</a>
                             </li>
                             <li>
-                                <a href="https://github.com/gardnerd06" className="hover:underline">Dan's Github</a>
+                                <a href="https://github.com/gardnerd06" className="hover:underline" target='_blank' rel="noreferrer">Dan's Github</a>
                             </li>
                         </ul>
                     </div>

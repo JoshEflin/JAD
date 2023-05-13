@@ -3,7 +3,7 @@ const { User, Ingredient } = require("../models");
 const { signToken } = require("../utils/auth");
 const { apiCall } = require("./gettingdata");
 const fs = require("fs");
-const stripe = require('stripe')(process.env.STRIPE_KEY)
+const stripe = require("stripe")(process.env.STRIPE_KEY);
 
 const resolvers = {
   Query: {
@@ -17,7 +17,7 @@ const resolvers = {
       if (context.user) {
         return User.findOne({ _id: context.user._id });
       }
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError("You need to be logged in!");
     },
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
@@ -27,57 +27,58 @@ const resolvers = {
         const product = await stripe.products.create({
           name: args.products[i].foodItem,
           description: args.products[i].description,
-          images: [args.products[i].photo]
-
+          images: [args.products[i].photo],
         });
 
         const price = await stripe.prices.create({
           product: product.id,
           unit_amount: args.products[i].price * 100,
-          currency: 'usd',
+          currency: "usd",
         });
 
         line_items.push({
           price: price.id,
-          quantity: args.products[i].stock
+          quantity: args.products[i].stock,
         });
       }
 
       const session = await stripe.checkout.sessions.create({
-        payment_method_types: ['card'],
+        payment_method_types: ["card"],
         line_items,
-        mode: 'payment',
+        mode: "payment",
         success_url: `${url}/success`,
-        cancel_url: `${url}/cancel`
+        cancel_url: `${url}/cancel`,
       });
 
       return { session: session.id };
-    }
+    },
   },
-
-
 
   Mutation: {
     getRecipe: async (parent, { foodStr }) => {
       const recipes = await apiCall(foodStr);
       const dbIngredients = await Ingredient.find({});
-      const ingredientMap = new Map(dbIngredients.map((dbIngredient) => [dbIngredient.name.toUpperCase(), dbIngredient]))
+      const ingredientMap = new Map(
+        dbIngredients.map((dbIngredient) => [
+          dbIngredient.name.toUpperCase(),
+          dbIngredient,
+        ])
+      );
 
       return recipes.map((recipe) => {
         const ingredients = recipe.ingredients.map((recipeIngredient) => {
           return {
             ...recipeIngredient,
-            inStock: !!ingredientMap.get(recipeIngredient.food.toUpperCase())
-          }
-        })
+            inStock: !!ingredientMap.get(recipeIngredient.food.toUpperCase()),
+          };
+        });
 
         return {
           ...recipe,
-          ingredients
-        }
-      })
+          ingredients,
+        };
+      });
     },
-
 
     addUser: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
@@ -116,15 +117,18 @@ const resolvers = {
       for (let i = 0; i < args.products.length; i++) {
         const filter = { name: args.products[i].foodItem };
         const stock = args.products[i].stock;
-        const updatedFood = await Ingredient.findOneAndUpdate(filter, { $inc: { stock: -stock } }, {
-          returnOriginal: false,
-        });
+        const updatedFood = await Ingredient.findOneAndUpdate(
+          filter,
+          { $inc: { stock: -stock } },
+          {
+            returnOriginal: false,
+          }
+        );
       }
       if (!updatedFood) {
         return console.log("Something went Wrong!");
       }
-      return updatedFood;
-
+      // return updatedFood;
     },
   },
 };

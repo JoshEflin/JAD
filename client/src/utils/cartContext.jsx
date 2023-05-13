@@ -42,7 +42,7 @@ export default function CartProvider({ children }) {
         return quantity;
     }
 
-     function AddOnetoCart (name) {
+    function AddOnetoCart (name) {
         const quantity = GetQuantity(name)
         {quantity.then((data)=>{ 
             console.log({insidecart: data})
@@ -69,10 +69,47 @@ export default function CartProvider({ children }) {
                             : product           
                 )
             )
-           
+
             }
         })}
         }
+
+    // function AddOnetoCart(name) {
+    //     const quantityPromise = GetQuantity(name);
+      
+    //     quantityPromise.then((data) => {
+    //       const quantity = data.stock;
+      
+    //       if (quantity > 0) {
+    //         const existingProduct = cartProducts.find(
+    //           (product) => product.foodItem === name
+    //         );
+      
+    //         if (existingProduct) {
+    //           if (existingProduct.stock < quantity) {
+    //             setCartProducts((prevProducts) =>
+    //               prevProducts.map((product) =>
+    //                 product.foodItem === name
+    //                   ? { ...product, stock: product.stock + 1 }
+    //                   : product
+    //               )
+    //             );
+    //           }
+    //         } else {
+    //           setCartProducts((prevProducts) => [
+    //             ...prevProducts,
+    //             {
+    //               foodItem: name,
+    //               price: data.price,
+    //               photo: data.photo,
+    //               stock: 1,
+    //               description: data.description,
+    //             },
+    //           ]);
+    //         }
+    //       }
+    //     });
+    //   }
 
      function RemoveOnefromCart(name) {
         const quantity = CartQuantity(name);

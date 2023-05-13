@@ -46,9 +46,9 @@ function App() {
       
       <Router>
         <CartProvider>
-        <div>
+        <div className='w-screen mx-auto'>
           <Header />
-          <div className='min-h-screen'>
+          <div className='min-h-screen overflow-x-hidden'>
             <Routes>
               <Route
                 path='/'

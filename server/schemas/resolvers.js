@@ -78,27 +78,7 @@ const resolvers = {
       })
     },
 
-    // getRecipe: async (parent, { foodStr }) => {
-    //   const recipes = await apiCall(foodStr);
-    //   const dbItems = await Ingredient.find({});
-    //   const updatedRecipes = recipes.map((recipe) => {
-    //     return {
-    //       ...recipe,
-    //       ingredients: recipe.ingredients.map((ingredient) => {
-    //         const found = dbItems.find((item) => {
-    //           return item.name === ingredient.food.toUpperCase();
-    //         });
-    //         return {
-    //           ...ingredient,
-    //           inStock: found ? true : false,
-    //         };
-    //       })
-    //     }
 
-    //   });
-    //   console.log(updatedRecipes)
-    //   return updatedRecipes
-    // },
     addUser: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
       const token = signToken(user);

@@ -37,7 +37,7 @@ function CouponSlider() {
             settings: {
             slidesToShow: 3,
             slidesToScroll: 3,
-            centerPadding: "40px",
+            centerPadding: "40px 40px",
             },
         },
         {
@@ -53,7 +53,7 @@ function CouponSlider() {
             settings: {
             slidesToShow: 1,
             slidesToScroll: 1,
-            centerPadding: "10px",
+            centerPadding: "10px 40px",
             },
         },
         ],
@@ -83,12 +83,12 @@ const Homepage = () => {
         <div className='mt-10 mb-10'>
             {Auth.loggedIn() ? (
                 <>
-                <h1 className='text-7xl font-semibold my-8 hover:cursor-default'>Hello {user.username}!</h1>
+                <h1 className='text-5xl font-semibold my-8 sm:text-7xl hover:cursor-default'>Hello {user.username}!</h1>
                 </>
             ) : (
                 <h1 className='text-xl font-semibold my-8 hover:cursor-default'>Please sign in or register!</h1>
             )}
-                <h1 className='text-5xl font-semibold hover:cursor-default'>Check out our categories!</h1>
+                <h1 className='text-3xl font-semibold sm:text-5xl hover:cursor-default'>Check out our categories!</h1>
                 <div className='flex flex-row justify-center'>
                     <div className='flex-col'>
                         <Link
@@ -113,34 +113,7 @@ const Homepage = () => {
                         <h2 className='text-xl font-semibold text-center hover:cursor-default'>Products</h2>
                     </div>
                 </div>
-                {/* <div className='flex flex-row justify-center'>
-                    <div className='w-full md:w-4/5 mx-auto'>
-                        <Swiper className='mx-10 my-5 h-'>
-                            <SwiperSlide>
-                                <img
-                                className="w-full h-full object-cover"
-                                src="https://via.placeholder.com/800x400?text=Slide+1"
-                                alt="First slide"
-                                />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <img
-                                className="w-full h-full object-cover"
-                                src="https://via.placeholder.com/800x400?text=Slide+2"
-                                alt="Second slide"
-                                />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <img
-                                className="w-full h-full object-cover"
-                                src="https://via.placeholder.com/800x400?text=Slide+3"
-                                alt="Third slide"
-                                />
-                            </SwiperSlide>
-                        </Swiper>
-                    </div>
-                </div> */}
-            <h1 className='text-5xl font-semibold my-8 hover:cursor-default'>Coupons & Deals</h1>
+            <h1 className='text-3xl font-semibold my-8 sm:text-5xl hover:cursor-default'>Coupons & Deals</h1>
                 <CouponSlider />
             </div>
     )

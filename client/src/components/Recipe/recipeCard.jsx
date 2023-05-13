@@ -78,7 +78,7 @@ export function RecipeCard({ cardData }) {
             return (
               <div
                 key={index}
-                className={`group rounded-lg p-4 bg-green-300 hover:bg-green-400 cursor-pointer ${
+                className={`group rounded-lg pb-4 bg-gray-100 hover:bg-green-300 cursor-pointer ${
                   isAnimated ? "animate-puffOut" : ""
                 } shadow-md hover:shadow-xl transitional-all duration-300`}
                 onClick={() => handleClick(index)}
@@ -87,7 +87,7 @@ export function RecipeCard({ cardData }) {
                   <img
                     src={image}
                     alt={label}
-                    className="absolute inset-0 object-cover w-full h-full rounded-lg group-hover:opacity-75 transition-opacity duration-300"
+                    className="absolute inset-0 object-cover w-full h-full rounded-t-lg group-hover:opacity-75 transition-opacity duration-300"
                   />
                 </div>
                 <div className="mt-4">

@@ -23,8 +23,6 @@ const resolvers = {
       const url = new URL(context.headers.referer).origin;
       const line_items = [];
 
-      console.log(args.products);
-
       for (let i = 0; i < args.products.length; i++) {
         const product = await stripe.products.create({
           name: args.products[i].foodItem,
@@ -44,15 +42,15 @@ const resolvers = {
           quantity: args.products[i].stock
         });
       }
-      console.log(line_items);
+
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
         line_items,
         mode: 'payment',
-        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${url}/`
+        success_url: `${url}/success`,
+        cancel_url: `${url}/cancel`
       });
-      
+
       return { session: session.id };
     }
   },
@@ -64,7 +62,7 @@ const resolvers = {
       const recipes = await apiCall(foodStr);
       const dbIngredients = await Ingredient.find({});
       const ingredientMap = new Map(dbIngredients.map((dbIngredient) => [dbIngredient.name.toUpperCase(), dbIngredient]))
-    
+
       return recipes.map((recipe) => {
         const ingredients = recipe.ingredients.map((recipeIngredient) => {
           return {
@@ -72,12 +70,12 @@ const resolvers = {
             inStock: !!ingredientMap.get(recipeIngredient.food.toUpperCase())
           }
         })
-        
+
         return {
           ...recipe,
           ingredients
         }
-      }) 
+      })
     },
 
     // getRecipe: async (parent, { foodStr }) => {
@@ -96,7 +94,7 @@ const resolvers = {
     //         };
     //       })
     //     }
-          
+
     //   });
     //   console.log(updatedRecipes)
     //   return updatedRecipes
@@ -132,16 +130,21 @@ const resolvers = {
       }
       return food;
     },
-    stock: async (parent, { name, stock }) => {
-      const filter = { name };
-      const update = { stock };
-      const updatedFood = await Ingredient.findOneAndUpdate(filter, update, {
-        returnOriginal: false,
-      });
+    stock: async (parent, args) => {
+      // console.log({ arguments: args.products[1] });
+
+      for (let i = 0; i < args.products.length; i++) {
+        const filter = { name: args.products[i].foodItem };
+        const stock = args.products[i].stock;
+        const updatedFood = await Ingredient.findOneAndUpdate(filter, { $inc: { stock: -stock } }, {
+          returnOriginal: false,
+        });
+      }
       if (!updatedFood) {
         return console.log("Something went Wrong!");
       }
       return updatedFood;
+
     },
   },
 };

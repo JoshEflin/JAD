@@ -16,6 +16,8 @@ import Products from './components/Products';
 import Homepage from './components/Homepage'
 import './App.css'
 import CartProvider from './utils/cartContext';
+import Cancel from './pages/Cancel';
+import Success from './pages/Success';
 
 
 const httpLink = createHttpLink({
@@ -71,6 +73,14 @@ function App() {
               <Route
               path='/recipes'
               element={<Recipe />}
+              />
+              <Route
+              path='/success'
+              element={<Success />}
+              />
+              <Route
+              path='/cancel'
+              element={<Cancel />}
               />
 
             </Routes>

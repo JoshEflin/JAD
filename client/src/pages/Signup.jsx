@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../utils/mutations';
+import { useMutation } from "@apollo/client";
+import { ADD_USER } from "../utils/mutations";
 
-import Auth from '../utils/auth';
+import Auth from "../utils/auth";
 
 const Signup = () => {
-    const [formState, setFormState] = useState({
-        username: '',
-        email: '',
-        password: '',
-    });
-    const [addUser, { error, data }] = useMutation(ADD_USER);
+  const [formState, setFormState] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+  const [addUser, { error, data }] = useMutation(ADD_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -49,7 +49,6 @@ const Signup = () => {
   //     email: '',
   //     password: '',
   //   });
-  
 
   return (
     <>
@@ -76,7 +75,10 @@ const Signup = () => {
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form className="space-y-6" onSubmit={handleFormSubmit}>
             <div>
-              <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
+              <label
+                htmlFor="username"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
                 Username
               </label>
               <div className="mt-2">
@@ -84,53 +86,56 @@ const Signup = () => {
                   id="username"
                   name="username"
                   type="text"
-                  value={(formState.username)}
+                  value={formState.username}
                   onChange={handleChange}
                   required
                   className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 placeholder:px-2 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+            <div className="relative">
+              <input
+                className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-rose-600 rounded-lg"
+                placeholder=""
+                name="email"
+                type="email"
+                value={formState.email}
+                onChange={handleChange}
+                autoComplete="email"
+                id="email"
+                required
+              />
+              <label
+                htmlFor="email"
+                className=" absolute left-0 top-2.5 px-2 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-base"
+              >
                 Email address
               </label>
-              <div >
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={(formState.email)}
-                  onChange={handleChange}
-                  autoComplete="email"
-                  required
-                  className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
+
+              <p className=" mt-2 invisible peer-invalid:visible text-pink-600 text-sm">
+                {" "}
+                Please enter a valid email address
+              </p>
             </div>
 
             <div>
-              <div className="flex items-center justify-between">
-                <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
-                  Password
-                </label>
-                <div className="text-sm">
-                  <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                    Forgot password?
-                  </a>
-                </div>
-              </div>
-              <div className="mt-2">
+              <div className=" relative mt-2">
                 <input
-                  id="password"
+                  placeholder="  ******"
                   name="password"
                   type="password"
                   value={formState.password}
                   onChange={handleChange}
                   autoComplete="current-password"
                   required
-                  className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className=" peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-rose-600 rounded-lg"
                 />
+                <label
+                  htmlFor="password"
+                  className=" absolute left-0 top-2.5 px-2 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-base"
+                >
+                  Password
+                </label>
               </div>
             </div>
 
@@ -153,7 +158,7 @@ const Signup = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Signup
+export default Signup;

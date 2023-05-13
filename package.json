@@ -12,6 +12,7 @@
   "author": "Josh Eflin, Daniel Gardner, Alexander Weiss",
   "license": "ISC",
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.3",
     "concurrently": "^8.0.1"
   }
 }

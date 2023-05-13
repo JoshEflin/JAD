@@ -8,8 +8,9 @@ import { CartContext } from '../../utils/cartContext';
 import { Button } from 'react-bootstrap';
 import newIcon from '../../assets/NewLogo.png'
 import { loadStripe } from '@stripe/stripe-js';
-import { useLazyQuery } from '@apollo/client';
+import { useLazyQuery, useMutation } from '@apollo/client';
 import { QUERY_CHECKOUT } from '../../utils/queries';
+import { UPDATE_INVENTORY } from '../../utils/mutations';
 
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
@@ -32,7 +33,7 @@ function classNames(...classes) {
 }
 
 const Header = () => {
-
+  const[updateStock, {d}] = useMutation(UPDATE_INVENTORY);
 const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
 useEffect(() => {
@@ -47,13 +48,20 @@ const [openM, setOpen] = useState(false)
   const handleShow = () => setOpen(true);
   const cancelButtonRef = useRef(null)
   const cart = useContext(CartContext);
-
+console.log(cart.items);
   function submitCheckout() {
     const productIds = [];
     
+    updateStock({
+
+      variables: {products: cart.items},
+
+    });
+
     cart.items.forEach((item) => {
-      console.log(item);
+
         productIds.push(item); 
+
     });
     
     getCheckout({

@@ -46,8 +46,8 @@ const resolvers = {
         payment_method_types: ["card"],
         line_items,
         mode: "payment",
-        success_url: `${url}/success`,
-        cancel_url: `${url}/cancel`,
+        success_url: `${url}`,
+        cancel_url: `${url}`,
       });
 
       return { session: session.id };

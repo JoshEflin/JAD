@@ -34,7 +34,7 @@ const Recipe = () => {
 
   return (
     <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
-      <h2 className="text-xl font-medium text-gray-900 mb-4">Recipe</h2>
+      <h2 className="text-3xl font-medium text-gray-900 mb-4">Recipes</h2>
       <RecipeCard cardData={cardData} />
       <form className="justify-center flex mb-8 sm:mb-12 mt-4">
         <label
@@ -49,7 +49,7 @@ const Recipe = () => {
             id="default-search"
             onChange={handleSearch}
             value={searchString.foodStr}
-            className="block w-full py-3 pr-10 text-sm text-gray-900 placeholder-gray-500 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+            className="block w-full py-3 pl-3 pr-10 text-sm text-gray-900 placeholder-gray-500 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
             placeholder="Search Recipes, foods, and other goodies!"
             required
           />

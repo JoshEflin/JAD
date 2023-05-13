@@ -1,3 +1,5 @@
+import shop from '../../assets/shopbg.png'
+
 const Footer = () => {
     return (
         <footer className="bg-green-800 mt-auto">
@@ -5,7 +7,7 @@ const Footer = () => {
                 <div className="md:flex md:justify-between">
                 <div className="mb-6 md:mb-0">
                     <a href="#" className="flex items-center">
-                        <img src="https://flowbite.com/docs/images/logo.svg" className="h-8 mr-3" alt="FlowBite Logo" />
+                        <img src={shop} className="h-8 mr-3" alt="Jad Grocery Logo" />
                         <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">JAD Grocery</span>
                     </a>
                 </div>
@@ -14,10 +16,13 @@ const Footer = () => {
                         <h2 className="mb-6 text-sm font-semibold text-white uppercase dark:text-white">Resources</h2>
                         <ul className="text-gray-400 dark:text-gray-400 font-medium">
                             <li className="mb-4">
-                                <a href="https://flowbite.com/" className="hover:underline">Flowbite</a>
+                                <a href="https://github.com/JoshEflin" className="hover:underline">Josh's Github</a>
+                            </li>
+                            <li className="mb-4">
+                                <a href="https://github.com/alexander1262" className="hover:underline">Alex's Github</a>
                             </li>
                             <li>
-                                <a href="https://tailwindcss.com/" className="hover:underline">Tailwind CSS</a>
+                                <a href="https://github.com/gardnerd06" className="hover:underline">Dan's Github</a>
                             </li>
                         </ul>
                     </div>
@@ -25,7 +30,7 @@ const Footer = () => {
                         <h2 className="mb-6 text-sm font-semibold text-white uppercase">Follow us</h2>
                         <ul className="text-gray-400 dark:text-gray-400 font-medium">
                             <li className="mb-4">
-                                <a href="https://github.com/JoshEflin/JAD" className="hover:underline ">Github</a>
+                                <a href="https://github.com/JoshEflin/JAD" className="hover:underline ">Project Github</a>
                             </li>
                         </ul>
                     </div>

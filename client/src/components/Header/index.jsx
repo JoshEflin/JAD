@@ -18,7 +18,7 @@ const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 import Auth from "../../utils/auth";
 
 const leftNav = [
-  { name: "Home", href: "#" },
+  { name: "Home", href: "" },
   { name: "Recipes", href: "recipes" },
   { name: "Products", href: "products" },
 ];
@@ -213,15 +213,13 @@ const productsCount = cart.items.reduce((sum, product)=> sum + product.stock,0);
               </div>
             </div>
           </div>
-          
-
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
               {leftNav.map((item) => (
-                <Disclosure.Button
+                <Link
                   key={item.name}
                   as="a"
-                  href={item.href}
+                  to={item.href}
                   className={classNames(
                     item.current
                       ? "underline text-white"
@@ -231,7 +229,7 @@ const productsCount = cart.items.reduce((sum, product)=> sum + product.stock,0);
                   aria-current={item.current ? "page" : undefined}
                 >
                   {item.name}
-                </Disclosure.Button>
+                </Link>
               ))}
                     {Auth.loggedIn() ? (
                       <>

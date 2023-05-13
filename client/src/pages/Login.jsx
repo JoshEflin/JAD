@@ -52,25 +52,6 @@ const Login = (props) => {
           </p>
         ) : (
           <form className="space-y-6" onSubmit={handleFormSubmit}>
-            {/* <div className="relative">
-              <input
-                id="email"
-                name="email"
-                type="text"
-                value={formState.email}
-                onChange={handleChange}
-                autoComplete="email"
-                required
-                className="peer  h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-rose-600 rounded-lg"
-                placeholder="john@doe.com"
-              />
-              <label
-                htmlFor="email"
-                className="absolute left-0 -top-5 px-2 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-base"
-              >
-                Email address
-              </label>
-            </div> */}
             <div className="relative">
               <input
                 className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-rose-600 rounded-lg"
@@ -85,7 +66,7 @@ const Login = (props) => {
               />
               <label
                 htmlFor="email"
-                className=" absolute left-0 top-2.5 px-2 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-base"
+                className=" absolute left-0 top-2 px-2 text-gray-400 text-base transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-base"
               >
                 Email address
               </label>
@@ -97,20 +78,9 @@ const Login = (props) => {
             </div>
 
             <div>
-              <div className="flex items-center justify-between">
-                {/* <div className="text-sm">
-                  <a
-                    href="#"
-                    className="font-semibold text-indigo-600 hover:text-indigo-500"
-                  >
-                    Forgot password?
-                  </a>
-                </div> */}
-              </div>
-
               <div className=" relative mt-2">
                 <input
-                  placeholder="  ******"
+                  placeholder="******"
                   name="password"
                   type="password"
                   value={formState.password}
@@ -121,7 +91,7 @@ const Login = (props) => {
                 />
                 <label
                   htmlFor="password"
-                  className=" absolute left-0 top-2.5 px-2 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-base"
+                  className=" absolute left-0 top-2.5 px-2 text-gray-400 text-base transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-base"
                 >
                   Password
                 </label>

@@ -58,6 +58,7 @@ const Signup = () => {
           <form className="space-y-6" onSubmit={handleFormSubmit}>
             <div className="mt-2 relative">
               <input
+                placeholder="Username"
                 id="username"
                 name="username"
                 type="text"
@@ -69,10 +70,10 @@ const Signup = () => {
               />
               <label
                 htmlFor="username"
-                className={`absolute left-0 top-2 px-2 text-gray-400 text-base transition-all ${
+                className={`absolute left-0 -top-5 px-2 text-gray-400 text-base transition-all ${
                   formState.username
-                    ? "-top-7 text-gray-600 text-base"
-                    : "peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-7 peer-focus:text-gray-600 peer-focus:text-base"
+                    ? " text-gray-600 text-base"
+                    : "peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-base"
                 }`}
               >
                 Username
@@ -83,7 +84,7 @@ const Signup = () => {
               <input
                 // set this form to be a peer so that we can assign a floating label
                 className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-rose-600 rounded-lg"
-                placeholder=""
+                placeholder="email"
                 name="email"
                 type="email"
                 value={formState.email}
@@ -94,10 +95,10 @@ const Signup = () => {
               />
               <label
                 htmlFor="email"
-                className={`absolute left-0 top-2 px-2 text-gray-400 text-base transition-all ${
+                className={`absolute left-0 -top-5 px-2 text-gray-400 text-base transition-all ${
                   formState.email
-                    ? "-top-6 text-gray-600 text-base"
-                    : "peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-6 peer-focus:text-gray-600 peer-focus:text-base"
+                    ? " text-gray-600 text-base"
+                    : "peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-base"
                 }`}
               >
                 Email address
@@ -112,7 +113,7 @@ const Signup = () => {
             <div>
               <div className=" relative mt-2">
                 <input
-                  placeholder="  ******"
+                  placeholder="******"
                   name="password"
                   type="password"
                   value={formState.password}
@@ -120,14 +121,14 @@ const Signup = () => {
                   autoComplete="current-password"
                   required
                   // set this form to be a peer so that we can assign a floating label
-                  className=" peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-rose-600 rounded-lg"
+                  className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-rose-600 rounded-lg"
                 />
                 <label
                   htmlFor="password"
-                  className={`absolute left-0 top-2 px-2 text-gray-400 text-base transition-all ${
+                  className={`absolute left-0 -top-5 px-2 text-gray-400 text-base transition-all ${
                     formState.password
-                      ? "-top-6 text-gray-600 text-base"
-                      : "peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-6 peer-focus:text-gray-600 peer-focus:text-base"
+                      ? " text-gray-600 text-base"
+                      : "peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-base"
                   }`}
                 >
                   Password

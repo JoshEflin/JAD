@@ -64,6 +64,7 @@ const Signup = () => {
                 value={formState.username}
                 onChange={handleChange}
                 required
+                // set this form to be a peer so that we can assign a floating label
                 className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-rose-600 rounded-lg"
               />
               <label
@@ -76,6 +77,7 @@ const Signup = () => {
 
             <div className="relative">
               <input
+                // set this form to be a peer so that we can assign a floating label
                 className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-rose-600 rounded-lg"
                 placeholder=""
                 name="email"
@@ -109,6 +111,7 @@ const Signup = () => {
                   onChange={handleChange}
                   autoComplete="current-password"
                   required
+                  // set this form to be a peer so that we can assign a floating label
                   className=" peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-rose-600 rounded-lg"
                 />
                 <label
@@ -129,13 +132,6 @@ const Signup = () => {
               </button>
             </div>
           </form>
-
-          {/* <p className="mt-10 text-center text-sm text-gray-500">
-            Not a member?{' '}
-            <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-              Start a 14 day free trial
-            </a>
-          </p> */}
         </div>
       </div>
     </>

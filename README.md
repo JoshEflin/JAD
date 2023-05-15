@@ -4,7 +4,7 @@
 
 ## Description
 
-In Project 3 we use React, GraphQL, Node, MongoDB, Mongoose and Heroku to build a MERN stack single page application. We created a super market website that allows the user to search recipes in order to find the ingredients the user would like to purchase. The user is able to add, delete or modify their cart before checking out. Required technologies include: JWT, Swipe and Heroku.
+A single page Grocery website created with React, GraphQL, Node, MongoDB, Mongoose and Heroku .Users can search for recipes and find the ingredients in the database . The shopping cart allows for addition, subtraction, removal, and quantify updated. The applicatioin makes use of JSON Web Tokens (JWT), Stripe(for payment) and Heroku(for deployment).
 
 [GitHub]  <https://github.com/JoshEflin/JAD>
 
@@ -12,6 +12,8 @@ In Project 3 we use React, GraphQL, Node, MongoDB, Mongoose and Heroku to build 
 
 - [Description](#description)
 - [Contributions](#contributions)
+- [Screenshots](#screenshots)
+- [Deployment](#deployment)
 - [License](#license)
 
 ## Contributions
@@ -21,13 +23,19 @@ Alex Weiss <https://github.com/alexander1262>
 Daniel Gardner <https://github.com/gardnerd06>
 
 ## Screenshots
-
+![ScreenShot Desktop](screenshots/Screenshot-desktop.png)
+![ScreenShot Mobile](screenshots/Screenshot-mobile.png)
+![ScreenShot Tablet](screenshots/Screenshot-tablet.png)
 ## How to Contribute
 
 If you'd like to contribute, here's how to reach us with additional questions 
 [Alex]<in/alexander-weiss-571356174>
 [Josh]<in/josh-eflin-4378baa7>
 [Daniel]<in/daniel-gardner-562020253>
+
+## Deployment
+ 
+ Start shopping now at https://groceryjad.herokuapp.com/
 
 ## License
 

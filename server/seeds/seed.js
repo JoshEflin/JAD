@@ -3,8 +3,7 @@ const { Ingredient } = require("../models/groceries");
 const groceryData = require("./data");
 
 connection.on("error", (err) => err);
-//  for every item in groceryData, set a random price and a random stock
-
+//  for every object in groceryData, set a random price and a random stock
 const seedData = groceryData.map(({ name, photo, description }) => {
   const ingredientObj = {
     name: name.toUpperCase(),
@@ -15,8 +14,8 @@ const seedData = groceryData.map(({ name, photo, description }) => {
   };
   return ingredientObj;
 });
-// console.log(seedData)
 
+// once the database connection is open, seed it, then exit the process once finished
 connection.once("open", async () => {
   console.log("connected to DB");
   await Ingredient.deleteMany({});

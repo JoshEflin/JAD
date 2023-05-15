@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+// The Header component is too large. This component makes a small dent in solving that issue.
 const NavComponent = ({
   navigation,
   isCurrent,
@@ -10,9 +10,10 @@ const NavComponent = ({
     <Link
       to={`/${item.href}`}
       key={item.name}
-      onClick={() => { handleNavClick(`${item.name}`)
-      window.scrollTo({ top: 0 });
-    }}
+      onClick={() => {
+        handleNavClick(`${item.name}`);
+        window.scrollTo({ top: 0 });
+      }}
       className={classNames(
         isCurrent === item.name
           ? "text-white"

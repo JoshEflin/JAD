@@ -67,7 +67,11 @@ const Login = (props) => {
               />
               <label
                 htmlFor="email"
-                className=" absolute left-0 top-2 px-2 text-gray-400 text-base transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-base"
+                className={` absolute left-0 top-2 px-2 text-gray-400 text-base transition-all ${
+                  formState.email
+                    ? "-top-5 text-gray-600 text-base"
+                    : "peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-base"
+                }`}
               >
                 Email address
               </label>
@@ -93,7 +97,11 @@ const Login = (props) => {
                 />
                 <label
                   htmlFor="password"
-                  className=" absolute left-0 top-2.5 px-2 text-gray-400 text-base transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-base"
+                  className={` absolute left-0 top-2 px-2 text-gray-400 text-base transition-all ${
+                    formState.password
+                      ? "-top-5 text-gray-600 text-base"
+                      : "peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-base"
+                  }`}
                 >
                   Password
                 </label>

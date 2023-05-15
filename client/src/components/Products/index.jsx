@@ -7,8 +7,6 @@ import Description from "./descriptions";
 
 const Products = () => {
   const cart = useContext(CartContext);
-  const [descriptionIndex, setDescriptionIndex] = useState(-1);
-  const [viewDescription, setViewDescription] = useState(false);
   const { loading, data } = useQuery(QUERY_ITEMS);
   const products = data?.getItems || [];
 
@@ -27,7 +25,6 @@ const Products = () => {
         </h2>
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 ">
           {products.map((product, i) => {
-            
             return (
               <div
                 key={i}
@@ -43,7 +40,9 @@ const Products = () => {
                     />
                   ) : null}
                   <div className="px-6 py-4">
-                    <div className="text-lg font-medium text-gray-800">{product.name}</div>
+                    <div className="text-lg font-medium text-gray-800">
+                      {product.name}
+                    </div>
                     <p className="text-gray-600 font-medium mb-1">
                       Price: ${product.price}
                     </p>

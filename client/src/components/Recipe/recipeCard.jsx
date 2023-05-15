@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { HealthLabels, Ingredients, MealType } from "./utils";
+import Products from "../Products";
 
 export function RecipeCard({ cardData }) {
   console.log(cardData);
@@ -25,9 +26,16 @@ export function RecipeCard({ cardData }) {
 
   if (cardData === null) {
     return (
-      <div className="box-border h-100 w-100 ">
-        Search for a Dish to see the Magic
-      </div>
+      <>
+        <div className="box-border h-100 w-100 font-bold">
+          Search for Recipes!
+        </div>
+        <p>Or Browser our Products</p>
+
+        <div className=" h-200 w-200 ">
+          <Products />
+        </div>
+      </>
     );
   } else {
     const { getRecipe } = cardData;

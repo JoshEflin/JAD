@@ -1,5 +1,6 @@
 // This file formats the properties of the getRecipe function so that they display
 // correctly on cards
+// it is called utils, think of it as "RecipeCardUtils"
 import { useContext, lazy, Suspense } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { CartContext } from "../../utils/cartContext";
@@ -61,10 +62,10 @@ export const Ingredients = ({ ingredients }) => {
   });
   return ingredientSpan;
 };
+// Map over the array and strip "/" off the strings contained within, so that the display is less ugly.
 export const MealType = ({ mealType }) => {
   return mealType.map((val, i) => {
     const types = val.split("/");
-    // console.log(types);
     if (types[1]) {
       return (
         <>

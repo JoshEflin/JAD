@@ -54,6 +54,7 @@ const Login = (props) => {
           <form className="space-y-6" onSubmit={handleFormSubmit}>
             <div className="relative">
               <input
+                // set this form to be a peer so that we can assign a floating label
                 className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-rose-600 rounded-lg"
                 placeholder=""
                 name="email"
@@ -87,6 +88,7 @@ const Login = (props) => {
                   onChange={handleChange}
                   autoComplete="current-password"
                   required
+                  // set this form to be a peer so that we can assign a floating label
                   className=" peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-rose-600 rounded-lg"
                 />
                 <label

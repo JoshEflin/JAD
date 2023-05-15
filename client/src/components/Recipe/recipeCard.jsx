@@ -4,6 +4,8 @@ import { HealthLabels, Ingredients, MealType } from "./utils";
 export function RecipeCard({ cardData }) {
   console.log(cardData);
   const [viewFullRecipe, setViewFullRecipe] = useState(false);
+
+  //  "animated"  is synomymous with "selected" the idea being, if a user has not clicked on a card, the index is set to -1. If the index is -1 then map over the objects returned from the API call. When a user clicks one, set the index to that index position so that only one card displays.
   const [animatedCardIndex, setAnimatedCardIndex] = useState(-1);
 
   useEffect(() => {
@@ -39,7 +41,9 @@ export function RecipeCard({ cardData }) {
       const mealType = getRecipe[animatedCardIndex].mealType;
       return (
         <div className="w-3/4 mx-auto">
-          <h3 className="mb-4 font-semibold text-5xl text-black cursor-default">{label}</h3>
+          <h3 className="mb-4 font-semibold text-5xl text-black cursor-default">
+            {label}
+          </h3>
           <button
             className="mb-4 text-white right-2.5 bottom-2.5 bg-green-700 hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 cursor-pointer"
             onClick={() => handleModalClick()}
@@ -53,7 +57,7 @@ export function RecipeCard({ cardData }) {
           />
 
           <MealType mealType={mealType} />
-          <p className='cursor-default'>{Math.floor(calories)} Calories</p>
+          <p className="cursor-default">{Math.floor(calories)} Calories</p>
           <p className="mb-6 font-semibold text-2xl cursor-default">
             {" "}
             Are you some kind of Crazy Vegan or something?! Don't fret, this

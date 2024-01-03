@@ -19,7 +19,7 @@ class Recipe {
 
 async function apiCall(foodStr) {
   const edamamData = await axios.get(
-    `https://api.edamam.com/api/recipes/v2?type=public&q=${foodStr}&app_id=${id}&app_key=${key}`
+    `https://api.edamam.com/api/recipes/v2?type=public&q=${foodStr}&app_id=${id}&app_key=${key}`,
   );
   const hits = edamamData.data.hits;
   // grab each recipe from Edamam API and create a new in instance of Recipe

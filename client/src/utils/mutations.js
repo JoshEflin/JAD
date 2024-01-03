@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
@@ -24,49 +24,50 @@ export const ADD_USER = gql`
   }
 `;
 export const GET_RECIPE = gql`
-mutation getRecipe($foodStr: String!) {
-  getRecipe(foodStr: $foodStr) {
-    calories
-    dishType
-    healthLabels
-    image
-    label
-    mealType
-    ingredients {
-      food
-      foodId
+  mutation getRecipe($foodStr: String!) {
+    getRecipe(foodStr: $foodStr) {
+      calories
+      dishType
+      healthLabels
       image
-      measure
-      quantity
-      text
-      weight
-      inStock
+      label
+      mealType
+      ingredients {
+        food
+        foodId
+        image
+        measure
+        quantity
+        text
+        weight
+        inStock
+      }
     }
   }
-}`;
+`;
 
 // FOR CART
 export const GET_ITEM = gql`
-mutation Item($foodItem: String!) {
-  item(foodItem: $foodItem) {
-    name
-    price
-    stock
-    photo
-    description
-    inStock
+  mutation Item($foodItem: String!) {
+    item(foodItem: $foodItem) {
+      name
+      price
+      stock
+      photo
+      description
+      inStock
+    }
   }
-}
-  `;
+`;
 // stock needs to be set before sending back, this query will set thee stock to the stock value passed in
 export const UPDATE_INVENTORY = gql`
-mutation Stock($products:[IngredientInput]) {
-  stock(products: $products) {
-    name
-    price
-    stock
-    photo
-    description
+  mutation Stock($products: [IngredientInput]) {
+    stock(products: $products) {
+      name
+      price
+      stock
+      photo
+      description
+    }
   }
-}
- `;
+`;

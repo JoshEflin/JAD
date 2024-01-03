@@ -55,7 +55,6 @@ const typeDefs = gql`
     session: ID
   }
 
-
   type Query {
     users: [User]
     user(username: String!): User
@@ -69,7 +68,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     getRecipe(foodStr: String!): [Recipe]
     item(foodItem: String!): Ingredient
-    stock(products: [IngredientInput]):Ingredient
+    stock(products: [IngredientInput]): Ingredient
   }
 `;
 

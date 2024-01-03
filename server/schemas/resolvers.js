@@ -62,7 +62,7 @@ const resolvers = {
         dbIngredients.map((dbIngredient) => [
           dbIngredient.name.toUpperCase(),
           dbIngredient,
-        ])
+        ]),
       );
 
       return recipes.map((recipe) => {
@@ -122,7 +122,7 @@ const resolvers = {
           { $inc: { stock: -stock } },
           {
             returnOriginal: false,
-          }
+          },
         );
       }
       if (!updatedFood) {

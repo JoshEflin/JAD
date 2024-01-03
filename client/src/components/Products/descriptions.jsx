@@ -1,6 +1,1 @@
-
-
-
-export default function Description(name) {
-
-}
+export default function Description(name) {}
